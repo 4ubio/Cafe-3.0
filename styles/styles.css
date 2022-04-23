@@ -330,3 +330,66 @@ body {
         width: 70%;
     }
 }
+
+/**Food order**/
+
+.food_order {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.container_info {
+    width: 95%;
+    margin: 0 auto 2rem auto;
+}
+
+.div_progress {
+    display: block;
+    text-align: center;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.progress_text {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary_color);
+    width: 95%;
+    margin: 0 auto;
+}
+
+.progress_bar {
+    -webkit-appearance: none;
+    width: 95%;
+    height: 5rem;
+}
+
+::-webkit-progress-bar {
+    background-color: var(--med_gray);
+    border-radius: 3rem;
+}
+
+::-webkit-progress-value {
+    background-color: var(--orange);
+    border-radius: 3rem;
+}
+
+@media (min-width: 768px) {
+    .food_order {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        margin: 0 auto 2rem 0;
+    }
+
+    .container_info {
+        width: 90%;
+        margin-bottom: 0;
+    }
+
+    .div_progress {
+        width: 95%;
+    }
+}
