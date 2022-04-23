@@ -287,3 +287,46 @@ body {
         width: 50%;
     }
 }
+
+/**Profile**/
+
+.user_pic {
+    height: 20rem;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.link_button {
+    background-color: var(--primary_color);
+    border: 1rem solid var(--primary_color);
+    border-radius: 1rem;
+    color: var(--white);
+    display:block;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    text-align: center; 
+    text-decoration: none;
+    width:100%;
+}
+
+@media (min-width: 768px) {
+    .user_pic {
+        height: 25rem;
+        margin-bottom: 0;
+    }
+
+    .title {
+        margin-top: 0;
+        text-align: left;
+    }
+
+    .link_button {
+        width: 70%;
+    }
+}
