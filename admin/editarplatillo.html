@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!--Styles-->
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <title>Admin - Cafe3.0</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="/assets/Cafe2.png" alt="logo">
+            <h1>Administración</h1>
+        </div>
+
+        <div class="sidebar-nav">
+            <ul class="navigation">
+                <li><a class="nav-li" href="panel.html">Panel de control</a></li>
+                <li><a class="nav-li active" href="menu.html">Menú</a></li>
+                <li><a class="nav-li" href="pedidos.html">Pedidos</a></li>
+                <li><a class="nav-li" href="usuarios.html">Usuarios</a></li>
+                <li><a class="nav-li" href="">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="title">
+            <h1>Editar Platillo</h1>
+        </div>
+
+        <div class="form">
+            <form class="new-form" action="" method="">
+                <div class="form-comp">
+                    <label for="">Nombre:</label>
+                    <input type="text" class="field">
+                </div>
+
+                <div class="form-comp">
+                    <label for="">Foto:</label>
+                    <input type="file" class="field">
+                </div>
+
+                <div class="form-comp">
+                    <label for="">Precio:</label>
+                    <input type="number" class="field">
+                </div>
+
+                <div class="form-comp">
+                    <label for="">Descripción:</label>
+                    <textarea name="" id="" class="field textarea"></textarea>
+                </div>
+
+                <div class="form-comp">
+                    <label for="">Estado:</label>
+                    <div class="custom-select">
+                        <select name="" id="" class="field select">
+                            <option value="">Disponible</option>
+                            <option value="">No Disponible</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+                <div class="form-comp">
+                    <label for="">Tiempo:</label>
+                    <input type="number" class="field">
+                </div>
+
+                <div class="form-comp submit">
+                    <button class="btn">Eliminar</button>
+                    <button class="btn guardar">Guardar</button>
+                </div>
+            </form>
+        </div>
+       
+    </main>
+</body>
+</html>

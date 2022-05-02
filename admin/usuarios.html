@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!--Styles-->
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <title>Admin - Cafe3.0</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="/assets/Cafe2.png" alt="logo">
+            <h1>Administración</h1>
+        </div>
+
+        <div class="sidebar-nav">
+            <ul class="navigation">
+                <li><a class="nav-li" href="panel.html">Panel de control</a></li>
+                <li><a class="nav-li" href="menu.html">Menú</a></li>
+                <li><a class="nav-li" href="pedidos.html">Pedidos</a></li>
+                <li><a class="nav-li active" href="usuarios.html">Usuarios</a></li>
+                <li><a class="nav-li" href="cerrarsesion.html">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="title">
+            <h1>Usuarios</h1>
+            <a href="nuevousuario.html"><button class="btn">Crear Usuario</button></a>
+        </div>
+        
+        <div class="table-container">
+            <table class="table-menu">
+                <tr class="headers">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>ID-IEST</th>
+                    <th>Acciones</th> 
+                </tr>
+                    
+                <tr>
+                    <td>1</td>
+                    <td>Gerardo</td>
+                    <td>Gómez Schekaibán</td>
+                    <td>19327</td>
+                    <td>
+                        <a href="editarusuario.html"><button class="btn-editar">Editar</button></a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Sebastián</td>
+                    <td>Rubio Quiroz</td>
+                    <td>19328</td>
+                    <td>
+                        <a href="editarusuario.html"><button class="btn-editar">Editar</button></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+       
+    </main>
+
+    <footer>
+        <p>viernes 22 de abril del 2022</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+:root {
+    --white: #fff;
+    --black: #202020;
+    --primary_color: #B63B14;
+    --second_color: #4C2319;
+    --gray: #f6f6f6;
+    --dark_gray: #343434;
+    --med_gray: #C7D0D8;
+    --green: #008037;
+    --dark_green: #213E1A;
+    --orange: #D47333;
+    --yellow: #FFDE59;
+    --font: 'Open Sans', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    font-family: var(--font);
+}
+
+/*GLOBALS*/
+
+/*SIDEBAR*/
+.sidebar{
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    background-color: var(--primary_color);
+}
+
+.sidebar-logo h1{
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.sidebar-logo img{
+    max-width: 300px;
+    padding: 1rem 1rem 0;
+}
+
+.sidebar-nav li{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.nav-li{
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    color: var(--white);
+    padding: 0.7rem 2rem; 
+    border-radius: 2rem; 
+}
+
+.nav-li:hover{
+    background-color: var(--white);
+    color: var(--primary_color);
+}
+
+.active{
+    color: var(--primary_color);
+    background-color: var(--white);
+}
+
+/*MAIN*/
+.main-content{
+    width: calc(100% - 300px);
+    position: absolute;
+    left: 300px;
+    min-height: calc(100vh - 10vh);
+}
+
+/*PANEL*/
+.welcome-msg{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 8vh;
+}
+
+.cards-container{
+    margin: 2.5rem auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 50%;
+}
+
+.card{
+    height: 8.5rem;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--gray);
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color: var(--med_gray);
+}
+
+.card p{
+    color: var(--primary_color);
+    font-weight: 700;
+}
+
+.card h1{
+    text-align: right;
+    font-size: 2.5rem;
+}
+
+/*MENÚ*/
+.title{
+    margin: 2rem 7rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    background-color: var(--primary_color);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    padding: 0.6rem 2rem;
+    border-radius: 0.7rem;
+    cursor: pointer;
+}
+
+/*TABLE*/
+
+.table-container{
+    overflow-y: scroll;
+    height: 70vh;
+}
+.table-menu{
+    margin: 0 auto;
+    width: 95%;
+    border-collapse: collapse;
+    overflow-y: scroll;
+}
+
+.headers{
+    background-color: var(--dark_gray);
+}
+
+th{
+    text-align: center;
+    padding: 0.3rem 1rem;
+    color: var(--white);
+}
+
+td{
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.table-img{
+    width: 50px;
+    height: 50px;
+    max-width: 100px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.btn-editar{
+    background-color: var(--dark_green);
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.disponible{
+    color: var(--green);
+    font-weight: 700;
+}
+
+.no-disponible{
+    color: #b40000;
+    font-weight: 700;
+}
+
+/*FORM*/
+.new-form{
+    width: 50vw;
+    height: 70vh;
+    margin: 0rem 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user{
+    height: 35vh;
+}
+
+.form-comp{
+    display: flex;
+    align-items: flex-start;
+}
+
+.form-comp label{
+    width: 100px;
+    padding-top: 0.3rem;
+}
+
+.field{
+    background-color: var(--gray);
+    outline: none;
+    border: 1px solid #d5dbd9;
+    border-radius: 0.3rem;
+    height: 2.2rem;
+    width: 18rem;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.field:focus{
+    border: 1px solid var(--dark_gray);
+}
+
+.textarea{
+    resize: none;
+    height: 6rem;
+    width: 30rem;
+    font-family: var(--font);
+    
+}
+
+.custom-select{
+    position: relative;
+    height: 100%;
+}
+
+.custom-select::before{
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    border: 8px solid;
+    border-color: var(--black) transparent transparent transparent;
+    pointer-events: none;
+}
+
+.select{
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.submit{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.guardar{
+    background-color: #D47333;
+    margin-left: 1rem;
+}
+
+.pedido{
+    width: 12rem;
+}
+
+footer{
+    width: calc(100% - 300px);
+    position: absolute;
+    left: 300px;
+    bottom: 5vh;
+}
+
+footer p{
+    font-weight:700;
+    text-align: right;
+    margin-right: 3rem;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 750px){
+
+    /*PANEL*/
+    .cards-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /*FORM*/
+    .form-comp{
+        flex-direction: column;
+    }
+
+    .form-comp label{
+        margin: 5px 0;
+    }
+}
