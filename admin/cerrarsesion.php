@@ -24,11 +24,11 @@
 
         <div class="sidebar-nav">
             <ul class="navigation">
-                <li><a class="nav-li" href="panel.html">Panel de control</a></li>
-                <li><a class="nav-li" href="menu.html">Menú</a></li>
-                <li><a class="nav-li" href="pedidos.html">Pedidos</a></li>
-                <li><a class="nav-li" href="usuarios.html">Usuarios</a></li>
-                <li><a class="nav-li active" href="cerrarsesion.html">Cerrar sesión</a></li>
+                <li><a class="nav-li" href="panel.php">Panel de control</a></li>
+                <li><a class="nav-li" href="menu.php">Menú</a></li>
+                <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
+                <li><a class="nav-li" href="usuarios.php">Usuarios</a></li>
+                <li><a class="nav-li active" href="cerrarsesion.php">Cerrar sesión</a></li>
             </ul>
         </div>
     </aside>

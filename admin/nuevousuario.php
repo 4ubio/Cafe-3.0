@@ -24,55 +24,34 @@
 
         <div class="sidebar-nav">
             <ul class="navigation">
-                <li><a class="nav-li" href="panel.html">Panel de control</a></li>
-                <li><a class="nav-li active" href="menu.html">Menú</a></li>
-                <li><a class="nav-li" href="pedidos.html">Pedidos</a></li>
-                <li><a class="nav-li" href="usuarios.html">Usuarios</a></li>
-                <li><a class="nav-li" href="cerrarsesion.html">Cerrar sesión</a></li>
+                <li><a class="nav-li" href="panel.php">Panel de control</a></li>
+                <li><a class="nav-li" href="menu.php">Menú</a></li>
+                <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
+                <li><a class="nav-li active" href="usuarios.php">Usuarios</a></li>
+                <li><a class="nav-li" href="cerrarsesion.php">Cerrar sesión</a></li>
             </ul>
         </div>
     </aside>
 
     <main class="main-content">
         <div class="title">
-            <h1>Nuevo Platillo</h1>
+            <h1>Nuevo Usuario</h1>
         </div>
 
         <div class="form">
-            <form class="new-form" action="" method="">
+            <form class="new-form user" action="" method="">
                 <div class="form-comp">
                     <label for="">Nombre:</label>
                     <input type="text" class="field">
                 </div>
 
                 <div class="form-comp">
-                    <label for="">Foto:</label>
-                    <input type="file" class="field">
+                    <label for="">Apellidos:</label>
+                    <input type="text" class="field">
                 </div>
 
                 <div class="form-comp">
-                    <label for="">Precio:</label>
-                    <input type="number" class="field">
-                </div>
-
-                <div class="form-comp">
-                    <label for="">Descripción:</label>
-                    <textarea name="" id="" class="field textarea"></textarea>
-                </div>
-
-                <div class="form-comp">
-                    <label for="">Estado:</label>
-                    <div class="custom-select">
-                        <select name="" id="" class="field select">
-                            <option value="">Disponible</option>
-                            <option value="">No Disponible</option>
-                        </select>
-                    </div>
-                    
-                </div>
-
-                <div class="form-comp">
-                    <label for="">Tiempo:</label>
+                    <label for="">ID-IEST:</label>
                     <input type="number" class="field">
                 </div>
 

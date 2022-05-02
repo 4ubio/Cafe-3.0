@@ -24,11 +24,11 @@
 
         <div class="sidebar-nav">
             <ul class="navigation">
-                <li><a class="nav-li" href="panel.html">Panel de control</a></li>
-                <li><a class="nav-li" href="menu.html">Menú</a></li>
-                <li><a class="nav-li" href="pedidos.html">Pedidos</a></li>
-                <li><a class="nav-li active" href="usuarios.html">Usuarios</a></li>
-                <li><a class="nav-li" href="cerrarsesion.html">Cerrar sesión</a></li>
+                <li><a class="nav-li" href="panel.php">Panel de control</a></li>
+                <li><a class="nav-li" href="menu.php">Menú</a></li>
+                <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
+                <li><a class="nav-li active" href="usuarios.php">Usuarios</a></li>
+                <li><a class="nav-li" href="cerrarsesion.php">Cerrar sesión</a></li>
             </ul>
         </div>
     </aside>
@@ -36,7 +36,7 @@
     <main class="main-content">
         <div class="title">
             <h1>Usuarios</h1>
-            <a href="nuevousuario.html"><button class="btn">Crear Usuario</button></a>
+            <a href="nuevousuario.php"><button class="btn">Crear Usuario</button></a>
         </div>
         
         <div class="table-container">
@@ -55,7 +55,7 @@
                     <td>Gómez Schekaibán</td>
                     <td>19327</td>
                     <td>
-                        <a href="editarusuario.html"><button class="btn-editar">Editar</button></a>
+                        <a href="editarusuario.php"><button class="btn-editar">Editar</button></a>
                     </td>
                 </tr>
 
@@ -65,7 +65,7 @@
                     <td>Rubio Quiroz</td>
                     <td>19328</td>
                     <td>
-                        <a href="editarusuario.html"><button class="btn-editar">Editar</button></a>
+                        <a href="editarusuario.php"><button class="btn-editar">Editar</button></a>
                     </td>
                 </tr>
             </table>

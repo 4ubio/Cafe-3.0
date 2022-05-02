@@ -1,3 +1,27 @@
+<?php 
+
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        header('location: /menu.php');
+    }
+
+    //Importar la conexion
+    require 'includes/config/database.php';
+    $db = conectardb();
+
+    //Consultar
+    $query = "SELECT * FROM menu WHERE id = ${id}";
+    $result = mysqli_query($db, $query);
+
+    if (!$result->num_rows) {
+        header('location: /menu.php');
+    }
+
+    $platillo = mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,27 +55,28 @@
         </div>
 
         <nav class="navigation">
-            <a class="nav_link yellow" href="menu.html">Menú</a>
-            <a class="nav_link" href="pedidos.html">Pedidos</a>
-            <a class="nav_link" href="perfil.html">Perfil</a>
+            <a class="nav_link yellow" href="menu.php">Menú</a>
+            <a class="nav_link" href="pedidos.php">Pedidos</a>
+            <a class="nav_link" href="perfil.php">Perfil</a>
             <a class="nav_link" href="">Cerrar sesión</a>
         </nav>
         
     </header>
 
-    <h1>Chilaquiles de pollo</h1>
+    <h1><?php echo $platillo['nombre'] ?></h1>
 
     <div class="container">
 
         <div class="product_info">
-            <img src="food/chilaquiles.jpeg" alt="food" class="food_info_img">
+            <img src="/food/<?php echo $platillo['foto'] ?>" alt="food" class="food_info_img">
 
             <div class="info">
-                <p class="no_magin_top">Ricos chilaquiles de pollo acompañados de frijoles con crema, queso y pollo desmenuzado encima.</p>
-                <p class="no_magin_top">Precio: <span> <b>$65</b> </span></p>
-                <p class="no_magin_top">Tiempo de preparación: <span> <b>10 minutos</b> </span></p>
-                <p class="no_magin_top">Estado: <span> <b>Disponible</b> </span></p>
+                <p class="no_magin_top"><?php echo $platillo['descripcion'] ?></p>
+                <p class="no_magin_top">Precio: <span> <b>$<?php echo $platillo['precio'] ?></b> </span></p>
+                <p class="no_magin_top">Tiempo de preparación: <span> <b><?php echo $platillo['tiempo'] ?> minutos</b> </span></p>
+                <p class="no_magin_top">Estado: <span> <b><?php echo $platillo['estado'] ?></b> </span></p>
 
+                <?php if($platillo['estado'] === 'Disponible') : ?>
                 <form method="" action="" class="product_form" novalidate>
                     <div class="container3">
                         <label>Cantidad: </label>
@@ -75,6 +100,7 @@
                         <input type="submit" value="Seleccionar" class="submit w-100">
                     </div>
                 </form>
+                <?php endif; ?>
 
             </div>
         </div>

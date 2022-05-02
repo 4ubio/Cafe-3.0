@@ -304,3 +304,27 @@ footer p{
         margin: 5px 0;
     }
 }
+
+/*Alerts*/
+
+.error__alert {
+    padding: .5rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 1rem 5rem;
+    border-radius: .7rem;
+    background-color: red;
+}
+
+.success__alert {
+    padding: .5rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 1rem 5rem;
+    border-radius: .7rem;
+    background-color: green;
+}

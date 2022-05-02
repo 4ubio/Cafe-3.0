@@ -31,9 +31,9 @@
         </div>
 
         <nav class="navigation">
-            <a class="nav_link" href="menu.html">Menú</a>
-            <a class="nav_link yellow" href="pedidos.html">Pedidos</a>
-            <a class="nav_link" href="perfil.html">Perfil</a>
+            <a class="nav_link" href="menu.php">Menú</a>
+            <a class="nav_link yellow" href="pedidos.php">Pedidos</a>
+            <a class="nav_link" href="perfil.php">Perfil</a>
             <a class="nav_link" href="">Cerrar sesión</a>
         </nav>
         
