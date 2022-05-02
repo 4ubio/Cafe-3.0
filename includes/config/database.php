@@ -1,6 +1,10 @@
 <?php 
 
-//Archivo para la conexión a la base de datos, modifialo en tu laptop si lo ves necesario
+/*
+    Archivo para la conexión a la base de datos,
+    modifialo en tu laptop si lo ves necesario.
+    En caso de tener error, imprimira un mensaje de error.
+*/
 
 function conectardb() : mysqli {
     $db = mysqli_connect('localhost', 'root', '', 'Cafe3');

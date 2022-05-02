@@ -1,3 +1,9 @@
+<?php 
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +59,7 @@
                 <p>ID IEST: <span><b>19666</b></span></p>
                 <p>Correo electronico: <span><b>sebastian.rubio@iest.edu.mx</b></span></p>
                 <br>
-                <a href="pedidos.html" class="link_button">Ir a tus pedidos</a>
+                <a href="pedidos.php" class="link_button">Ir a tus pedidos</a>
             </div>
         </div>
     </div>

@@ -1,3 +1,9 @@
+<?php 
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +64,7 @@
                 </div>
 
                 <div class="container">
-                    <a class="form_link" href="index.html">O inicia sesión</a>
+                    <a class="form_link" href="index.php">O inicia sesión</a>
                 </div>
             </form>
         </div>

@@ -1,3 +1,9 @@
+<?php 
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +49,7 @@
                 </div>
 
                 <div class="container">
-                    <a class="form_link" href="register.html">O registrate ya</a>
+                    <a class="form_link" href="register.php">O registrate ya</a>
                 </div>
             </form>
         </div>

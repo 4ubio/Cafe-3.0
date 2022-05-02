@@ -1,13 +1,11 @@
 <?php 
-
     //Importar la conexion
     require 'includes/config/database.php';
     $db = conectardb();
 
-    //Escribir el query y obtener el resultado
+    //Escribir el query y obtener el resultado (Obtener todos los registros de la tabla menu)
     $query = "SELECT * FROM menu ORDER BY nombre ASC";
     $resultQ1 = mysqli_query($db, $query);
-
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +59,14 @@
 
     <div class="container2">
 
+        <!--
+            Con este while recorremos todos los registros de la tabla menu.
+            cada fila la guardamos en la variable $platillo y entre corchete 
+            accedemos a las columnas necesarias colocando su nombre.
+            Para el caso de la etiqueta img, accedera a la ruta donde este
+            guardada la imagen.
+            Entre cada vuelta al while, imprimira una fila y su contenido
+        -->
         <?php while($platillo = mysqli_fetch_assoc($resultQ1)) : ?> 
             <a href="entrada.php?id=<?php echo $platillo['id']; ?>" class="link_product">
                 <div class="product animate__animated animate__backInUp">

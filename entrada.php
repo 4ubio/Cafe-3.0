@@ -1,8 +1,9 @@
 <?php 
-
+    //Obtenemos el id del URL para poder realizar la consulta de que platillo mostrar
     $id = $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
 
+    //Validación en caso de que el usuario modifique el URL eliminando el ID
     if (!$id) {
         header('location: /menu.php');
     }
@@ -11,14 +12,16 @@
     require 'includes/config/database.php';
     $db = conectardb();
 
-    //Consultar
+    //Consultar la base de datos para obtener el platillo con el ID indicado en el URL
     $query = "SELECT * FROM menu WHERE id = ${id}";
     $result = mysqli_query($db, $query);
 
+    //Validación en caso de que el usuario modifique el URL por un ID no existente
     if (!$result->num_rows) {
         header('location: /menu.php');
     }
 
+    //Guardamos la fila del platillo deseado
     $platillo = mysqli_fetch_assoc($result);
 ?>
 
@@ -75,7 +78,14 @@
                 <p class="no_magin_top">Precio: <span> <b>$<?php echo $platillo['precio'] ?></b> </span></p>
                 <p class="no_magin_top">Tiempo de preparación: <span> <b><?php echo $platillo['tiempo'] ?> minutos</b> </span></p>
                 <p class="no_magin_top">Estado: <span> <b><?php echo $platillo['estado'] ?></b> </span></p>
-
+                
+                <!--
+                    Con este if, en caso de que el estado guardado del platillo
+                    sea Disponible, mostrara el formulario para seleccionar
+                    cantidad y el boton de pedir, en caso contrario, no mostrará
+                    nada.
+                -->
+                
                 <?php if($platillo['estado'] === 'Disponible') : ?>
                 <form method="" action="" class="product_form" novalidate>
                     <div class="container3">

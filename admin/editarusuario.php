@@ -1,3 +1,10 @@
+<?php 
+    
+    
+    //Fecha actual
+    $today = getdate();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,5 +70,9 @@
         </div>
        
     </main>
+
+    <footer>
+        <p><?php echo $today['weekday'] . " " . $today['mday'] . ", " . $today['month'] . ", " . $today['year']?></p>
+    </footer>
 </body>
 </html>

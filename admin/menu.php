@@ -7,7 +7,7 @@
     $query = "SELECT * FROM menu ORDER BY id ASC";
     $resultQ1 = mysqli_query($db, $query);
 
-    //Muestra mensaje condicional
+    //Guardamos el numero pasado por medio del URL, este sirve para mostrar mensajes
     $resultGet = $_GET['result'] ?? null;
 
     //Fecha actual
@@ -55,6 +55,11 @@
             <a href="platillo.php"><button class="btn">Crear Platillo</button></a>
         </div>
 
+        <!--
+            Aqui imprimimos mensajes dependiendo de los numeros 
+            pasados por otras partes de la zona de administración
+        -->
+
         <?php if(intval($resultGet) === 1) : ?>
             <p class="success__alert">Platillo registrado correctamente</p>
         <?php elseif(intval($resultGet) === 2) : ?>
@@ -73,8 +78,19 @@
                     <th>Tiempo</th>
                     <th>Acciones</th> 
                 </tr>
+
+                <!--
+                    Con este while recorremos todos los registros de la tabla menu.
+                    cada fila la guardamos en la variable $platillo y entre corchete 
+                    accedemos a las columnas necesarias colocando su nombre.
+                    Para el caso de la etiqueta img, accedera a la ruta donde este
+                    guardada la imagen.
+                    Entre cada vuelta al while, imprimira una fila y su contenido dentro
+                    de la tabla.
+                -->
                     
-                <?php while($platillo = mysqli_fetch_assoc($resultQ1)) :  
+                <?php while($platillo = mysqli_fetch_assoc($resultQ1)) : 
+                    //Con este if cambiamos el color del estado de cada platillo 
                     if ($platillo['estado']==='Disponible') {
                         $class='disponible';
                     } else {
@@ -90,6 +106,11 @@
                     <td class="<?php echo $class ?>"><?php echo $platillo['estado'] ?></td>
                     <td><?php echo $platillo['tiempo'] ?></td>
                     <td>
+                        <!--
+                            El link de editar de cada platillo llevará contigo un número
+                            el cual es su ID, esto para pasar datos entre pantallas y saber
+                            cual exactamente es el platillo a editar
+                        -->
                         <a href="editarplatillo.php?id=<?php echo $platillo['id']; ?>"><button class="btn-editar">Editar</button></a>
                     </td>
                 </tr>
@@ -98,6 +119,11 @@
         </div>
        
     </main>
+
+    <!--
+        Aqui se imprime la fecha en formato:
+        Weekday Monthday, Month, Year
+    -->
 
     <footer>
         <p><?php echo $today['weekday'] . " " . $today['mday'] . ", " . $today['month'] . ", " . $today['year']?></p>
