@@ -134,6 +134,7 @@
 </head>
 <body>
     <aside class="sidebar">
+
         <div class="sidebar-logo">
             <img src="/assets/Cafe2.png" alt="logo">
             <h1>Administración</h1>
@@ -151,6 +152,13 @@
     </aside>
 
     <main class="main-content">
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
         <div class="title">
             <h1>Editar Platillo</h1>
         </div>
@@ -213,6 +221,8 @@
         </div>
        
     </main>
+
+    <script src="../js/admin.js"></script>
 
     <!--
         Aqui se imprime la fecha en formato:

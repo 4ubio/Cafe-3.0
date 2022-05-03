@@ -32,6 +32,7 @@ body{
     height: 100%;
     position: fixed;
     background-color: var(--primary_color);
+    transition: all 0.3s;
 }
 
 .sidebar-logo h1{
@@ -76,13 +77,14 @@ body{
     position: absolute;
     left: 300px;
     min-height: calc(100vh - 10vh);
+    transition: all 0.3s;
 }
 
 /*PANEL*/
 .welcome-msg{
     text-align: center;
     font-size: 1.2rem;
-    margin-top: 8vh;
+    margin-top: 10vh;
 }
 
 .cards-container{
@@ -90,7 +92,7 @@ body{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    width: 50%;
+    width: 30rem;
 }
 
 .card{
@@ -118,9 +120,10 @@ body{
 
 /*MENÚ*/
 .title{
-    margin: 2rem 7rem;
+    margin: 2rem 0rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .btn{
@@ -162,6 +165,10 @@ td{
     padding: 0.5rem 0;
 }
 
+tr:hover{
+    background-color: var(--med_gray);
+}
+
 .table-img{
     width: 50px;
     height: 50px;
@@ -198,7 +205,7 @@ td{
     margin: 0rem 7rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .user{
@@ -249,7 +256,7 @@ td{
     content: "";
     position: absolute;
     top: 12px;
-    right: 20px;
+    right: 25px;
     border: 8px solid;
     border-color: var(--black) transparent transparent transparent;
     pointer-events: none;
@@ -271,7 +278,7 @@ td{
 }
 
 .pedido{
-    width: 12rem;
+    width: 15rem;
 }
 
 footer{
@@ -287,21 +294,113 @@ footer p{
     margin-right: 3rem;
 }
 
+.burger{
+    margin: 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+.burger div{
+    width: 25px;
+    background-color: var(--black);
+    height: 3px;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
 /*RESPONSIVE*/
-@media (max-width: 750px){
+@media (max-width: 768px){
 
     /*PANEL*/
-    .cards-container{
-        grid-template-columns: repeat(1, 1fr);
+    .sidebar{
+        transform: translateX(-300px);
     }
 
+    .main-content{
+        left: 0;
+        width: 100%;
+    }
+
+    .cards-container{
+        width: 30rem;
+    }
+
+    .burger{
+        display: block;
+    }
+
+    .rotateright{
+        transform: rotate(-45deg) translate(-5px,6px);
+    }
+
+    .opacity{
+        opacity: 0;
+    }
+
+    .rotateleft{
+        transform: rotate(45deg) translate(-5px,-6px); 
+    }
+
+    .welcome-msg{
+        margin-top: 5vh;
+    }
+
+    .show{
+        transform: translateX(0px);
+    }
+
+    .slide{
+        left: 300px;
+        width: 80%;
+    }
+
+    /*TABLE*/
+    .table-container{
+        width: 90%;
+        margin: 0 auto;
+    }
+    
     /*FORM*/
+    .new-form{
+        width: 80vw;
+        height: 100vh;
+        margin: 0 2rem;
+    }
+
     .form-comp{
         flex-direction: column;
     }
 
     .form-comp label{
         margin: 5px 0;
+    }
+
+    .textarea{
+        width: 18rem;
+        height: 8rem;
+    }
+
+    .submit{
+        align-items: flex-end;
+        flex-direction: row;
+    }
+
+    .user{
+        height: 40vh;
+    }
+}
+
+@media (max-width: 480px){
+
+    /*PANEL*/
+    .cards-container{
+        grid-template-columns: repeat(1, 1fr);
+        width: 70%;
+    }
+
+    /*FOOTER*/
+    footer{
+        display: none;
     }
 }
 

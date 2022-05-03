@@ -41,6 +41,13 @@
     </aside>
 
     <main class="main-content">
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
         <div class="title">
             <h1>Nuevo Usuario</h1>
         </div>
@@ -69,6 +76,8 @@
         </div>
        
     </main>
+
+    <script src="../js/admin.js"></script>
 
     <!--
         Aqui se imprime la fecha en formato:
