@@ -75,6 +75,8 @@
             }
         }
     }
+
+    $today = getdate();
 ?>
 
 <!DOCTYPE html>
