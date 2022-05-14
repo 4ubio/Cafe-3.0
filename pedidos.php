@@ -40,7 +40,7 @@
             <a class="nav_link" href="menu.php">Menú</a>
             <a class="nav_link yellow" href="pedidos.php">Pedidos</a>
             <a class="nav_link" href="perfil.php">Perfil</a>
-            <a class="nav_link" href="">Cerrar sesión</a>
+            <a class="nav_link" href="index.php?logout=1">Cerrar sesión</a>
         </nav>
         
     </header>

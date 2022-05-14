@@ -1,7 +1,12 @@
 <?php 
-    //Importar la conexion
-    require 'includes/config/database.php';
-    $db = conectardb();
+    //Importar controlador de autenticación
+    require_once 'controllers/authController.php';
+
+    //Verificar si existe una sesión iniciada
+    if(!$_SESSION['id-iest']){
+        header('Location: index.php');
+        exit();
+    }
 
     //Escribir el query y obtener el resultado (Obtener todos los registros de la tabla menu)
     $query = "SELECT * FROM menu ORDER BY nombre ASC";
@@ -50,12 +55,12 @@
             <a class="nav_link yellow" href="menu.php">Menú</a>
             <a class="nav_link" href="pedidos.php">Pedidos</a>
             <a class="nav_link" href="perfil.php">Perfil</a>
-            <a class="nav_link" href="">Cerrar sesión</a>
+            <a class="nav_link" href="index.php?logout=1">Cerrar sesión</a>
         </nav>
         
     </header>
 
-    <h1>Bienvenido, Sebastián</h1>
+    <h1>Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
 
     <div class="container2">
 

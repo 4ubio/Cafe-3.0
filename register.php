@@ -1,7 +1,5 @@
 <?php 
-
-
-
+require_once 'controllers/authController.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,38 +27,75 @@
 <body>
     <div class="index_background container">
         <div class="">
-            <form method="" action="" class="log_form" novalidate>
+            <form id=formulario method="post" action="" class="log_form">
                 <div class="container">
                     <img src="assets/logo.png" alt="logo" class="logo_img">
                 </div>
                 
                 <div class="form_comp">
                     <img src="assets/email.png" alt="email" class="icon">
-                    <input autocomplete="off" name="email" type="email" placeholder="Correo institucional" class="field" value="">
+                    <input id="email" autocomplete="off" name="email" type="email" placeholder="Correo institucional" class="field" value="<?php echo $email; ?>">
                 </div>
+
+                <?php if(isset($errors['invalidEmail'])) : ?>
+                    <p class="error"><?php echo $errors['invalidEmail']; ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($errors['emailExists'])) : ?>
+                    <p class="error"><?php echo $errors['emailExists']; ?></p>
+                <?php endif; ?>
 
                 <div class="form_comp">
                     <img src="assets/user_icon.png" alt="user" class="icon">
-                    <input autocomplete="off" name="name" type="text" placeholder="Nombre" class="field" value="">
+                    <input autocomplete="off" name="name" type="text" placeholder="Nombre" class="field">
                 </div>
+                
+                <?php if(isset($errors['invalidName'])) : ?>
+                    <p class="error"><?php echo $errors['invalidName']; ?></p>
+                <?php endif; ?>
 
                 <div class="form_comp">
                     <img src="assets/user_icon.png" alt="user" class="icon">
-                    <input autocomplete="off" name="lastname" type="text" placeholder="Apellido" class="field" value="">
+                    <input autocomplete="off" name="lastname" type="text" placeholder="Apellido" class="field" value="<?php echo $lastname; ?>">
                 </div>
+                
+                <?php if(isset($errors['invalidLastName'])) : ?>
+                    <p class="error"><?php echo $errors['invalidLastName']; ?></p>
+                <?php endif; ?>
 
                 <div class="form_comp">
                     <img src="assets/dolphin.png" alt="dolphin" class="icon">
-                    <input autocomplete="off" name="ID_IEST" type="number" placeholder="ID IEST" class="field" value="">
+                    <input 
+                    onkeypress = "return isNumeric(event)"
+                    oninput = "maxLengthCheck(this)" 
+                    name="ID_IEST" 
+                    type="number" 
+                    placeholder="ID IEST"  
+                    min = "1"
+                    max = "99999"
+                    class="field" 
+                    value="<?php echo $idiest; ?>"/>
                 </div>
+                
+                <?php if(isset($errors['invalidIdIest'])) : ?>
+                    <p class="error"><?php echo $errors['invalidIdIest']; ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($errors['idIestExists'])) : ?>
+                    <p class="error"><?php echo $errors['idIestExists']; ?></p>
+                <?php endif; ?>
     
                 <div class="form_comp">
                     <img src="assets/password.png" alt="password" class="icon">
-                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field">
+                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field" value="<?php echo $password; ?>">
                 </div>
                 
+                <?php if(isset($errors['password'])) : ?>
+                    <p class="error"><?php echo $errors['password']; ?></p>
+                <?php endif; ?>
+                
                 <div class="container">
-                    <input type="submit" value="Registrarse" class="submit">
+                    <input type="submit" value="Registrarse" class="submit" name="signup">
                 </div>
 
                 <div class="container">
@@ -69,5 +104,6 @@
             </form>
         </div>
     </div>
+    <script src="js/idIest.js"></script>
 </body>
 </html>

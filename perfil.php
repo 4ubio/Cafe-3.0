@@ -1,6 +1,7 @@
 <?php 
 
-
+    //Importar controlador de autenticación
+    require_once 'controllers/authController.php';
 
 ?>
 
@@ -40,7 +41,7 @@
             <a class="nav_link" href="menu.php">Menú</a>
             <a class="nav_link" href="pedidos.php">Pedidos</a>
             <a class="nav_link yellow" href="perfil.php">Perfil</a>
-            <a class="nav_link" href="">Cerrar sesión</a>
+            <a class="nav_link" href="index.php?logout=1">Cerrar sesión</a>
         </nav>
         
     </header>
@@ -55,9 +56,9 @@
             </div>
 
             <div class="info">
-                <p class="title">Sebastián Rubio Quiroz</p>
-                <p>ID IEST: <span><b>19666</b></span></p>
-                <p>Correo electronico: <span><b>sebastian.rubio@iest.edu.mx</b></span></p>
+                <p class="title"><?php echo $_SESSION['nombre'] ; ?></p>
+                <p>ID IEST: <span><b><?php echo $_SESSION['id-iest'] ; ?></b></span></p>
+                <p>Correo electronico: <span><b><?php echo $_SESSION['email'] ; ?></b></span></p>
                 <br>
                 <a href="pedidos.php" class="link_button">Ir a tus pedidos</a>
             </div>

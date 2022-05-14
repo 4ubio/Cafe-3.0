@@ -1,7 +1,5 @@
 <?php 
-
-
-
+require_once 'controllers/authController.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,23 +27,39 @@
 <body>
     <div class="index_background container">
         <div class="">
-            <form method="" action="" class="log_form" novalidate>
+            <form method="post" action="" class="log_form" novalidate>
                 <div class="container">
                     <img src="assets/logo.png" alt="logo" class="logo_img">
                 </div>
                 
                 <div class="form_comp">
                     <img src="assets/email.png" alt="email" class="icon">
-                    <input autocomplete="off" name="email" type="email" placeholder="Correo institucional" class="field" value="">
+                    <input autocomplete="off" name="email" type="email" placeholder="Correo institucional" class="field" value="<?php echo $email; ?>">
                 </div>
+
+                <?php if(isset($errors['invalidEmail'])) : ?>
+                    <p class="error"><?php echo $errors['invalidEmail']; ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($errors['email_fail'])) : ?>
+                    <p class="error"><?php echo $errors['email_fail']; ?></p>
+                <?php endif; ?>
     
                 <div class="form_comp">
                     <img src="assets/password.png" alt="password" class="icon">
-                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field">
+                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field" value="<?php echo $password; ?>">
                 </div>
+
+                <?php if(isset($errors['password'])) : ?>
+                    <p class="error"><?php echo $errors['password']; ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($errors['password_fail'])) : ?>
+                    <p class="error"><?php echo $errors['password_fail']; ?></p>
+                <?php endif; ?>
                 
                 <div class="container">
-                    <input type="submit" value="Iniciar sesión" class="submit">
+                    <input type="submit" value="Iniciar sesión" class="submit" name="login">
                 </div>
 
                 <div class="container">
