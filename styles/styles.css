@@ -77,6 +77,21 @@ body {
     height: 100vh;
 }
 
+.index_background_color {
+    background-color: var(--second_color);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+    height: 100vh;
+}
+
+.p_admin {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 0rem;
+}
+
 .log_form {
     background-color: var(--white);
     border: 0.7rem solid var(--primary_color);

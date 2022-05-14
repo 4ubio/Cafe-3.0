@@ -23,7 +23,7 @@
         $password = mysqli_real_escape_string( $db, $_POST['password'] );
 
         //Validaciones
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email)){
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email) || !(strpos($email, "@iest.edu.mx"))) {
             $errors['invalidEmail'] = "Email no válido";
         }
         if(empty($name)){
@@ -34,7 +34,7 @@
         }
         if(empty($idiest) || !filter_var($idiest, FILTER_VALIDATE_INT, 
         array("options" => array("min_range" => 1, "max_range" => 99999)))){
-            $errors['invalidIdIest'] = "ID-IEST no válido";
+            $errors['invalidIdIest'] = "ID IEST no válido";
         }
         if(empty($password)){
             $errors['password'] = "Crea una contraseña";
@@ -54,7 +54,7 @@
 
         //Verificar si el ID-IEST ya existe
         if(($idResult->num_rows) > 0){
-            $errors['idIestExists'] = "El ID-IEST ingresado ya existe";
+            $errors['idIestExists'] = "El ID IEST ingresado ya existe";
         }
 
         //Si no hay errores
@@ -88,7 +88,7 @@
         $password = $_POST['password'];
 
         //Validations
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email)){
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email) || !(strpos($email, "@iest.edu.mx"))){
             $errors['invalidEmail'] = "Email no válido";
         }
         if(empty($password)){

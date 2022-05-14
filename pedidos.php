@@ -1,7 +1,12 @@
 <?php 
+    //Importar controlador de autenticación
+    require_once 'controllers/authController.php';
 
-
-
+    //Verificar si existe una sesión iniciada
+    if(!$_SESSION['id-iest']){
+        header('Location: index.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +55,7 @@
     <div class="container food_order">
 
         <div class="product_info container_info">
-            <img src="food/chilaquiles.jpeg" alt="food" class="food_info_img">
+            <img src="assets/food1.jpeg" alt="food" class="food_info_img">
             <div class="info">
                 <h2 class="title">No. 12345</h2>
                 <p class="no_magin_top"><b>Chilaquiles de pollo</b></p>
@@ -74,7 +79,7 @@
     <div class="container food_order">
 
         <div class="product_info container_info">
-            <img src="food/boneless.jpeg" alt="food" class="food_info_img">
+            <img src="assets/food2.jpeg" alt="food" class="food_info_img">
             <div class="info">
                 <h2 class="title">No. 12346</h2>
                 <p class="no_magin_top"><b>Boneless BBQ</b></p>

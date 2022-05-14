@@ -1,5 +1,5 @@
 <?php 
-require_once 'controllers/authController.php';
+    require_once 'controllers/authController.php';
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ require_once 'controllers/authController.php';
 
                 <div class="form_comp">
                     <img src="assets/user_icon.png" alt="user" class="icon">
-                    <input autocomplete="off" name="name" type="text" placeholder="Nombre" class="field">
+                    <input autocomplete="off" name="name" type="text" placeholder="Nombre" class="field" value="<?php echo $name; ?>">
                 </div>
                 
                 <?php if(isset($errors['invalidName'])) : ?>

@@ -1,8 +1,12 @@
 <?php 
-
     //Importar controlador de autenticación
     require_once 'controllers/authController.php';
 
+    //Verificar si existe una sesión iniciada
+    if(!$_SESSION['id-iest']){
+        header('Location: index.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>

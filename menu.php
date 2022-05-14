@@ -8,9 +8,8 @@
         exit();
     }
 
-    //Escribir el query y obtener el resultado (Obtener todos los registros de la tabla menu)
-    $query = "SELECT * FROM menu ORDER BY nombre ASC";
-    $resultQ1 = mysqli_query($db, $query);
+    //Importar controlador de menu
+    require_once 'controllers/menuController.php';
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +74,7 @@
         <?php while($platillo = mysqli_fetch_assoc($resultQ1)) : ?> 
             <a href="entrada.php?id=<?php echo $platillo['id']; ?>" class="link_product">
                 <div class="product animate__animated animate__backInUp">
-                    <img src="/food/<?php echo $platillo['foto'] ?>" alt="hamburguesa" class="food_img">
+                    <img src="/food/<?php echo $platillo['foto'] ?>" alt="food" class="food_img">
                     <h2><?php echo $platillo['nombre'] ?></h2>
                 </div>
             </a>
