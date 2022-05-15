@@ -1,5 +1,5 @@
 <?php 
-    //require_once 'controllers/authController.php';
+    require_once 'controllers/authController.php';
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +36,29 @@
 
                 <div class="form_comp">
                     <img src="/assets/user_icon.png" alt="user" class="icon">
-                    <input autocomplete="off" name="user" type="user" placeholder="Usuario" class="field" value="">
+                    <input autocomplete="off" name="user" type="user" placeholder="Usuario" class="field" value="<?php echo $user; ?>">
                 </div>
+
+                <?php if(isset($errors['invalidUser'])) : ?>
+                    <p class="error"><?php echo $errors['invalidUser']; ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($errors['user_fail'])) : ?>
+                    <p class="error"><?php echo $errors['user_fail']; ?></p>
+                <?php endif; ?>
     
                 <div class="form_comp">
                     <img src="/assets/password.png" alt="password" class="icon">
-                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field" value="">
+                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field" value="<?php echo $password; ?>">
                 </div>
+
+                <?php if(isset($errors['password'])) : ?>
+                    <p class="error"><?php echo $errors['password']; ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($errors['password_fail'])) : ?>
+                    <p class="error"><?php echo $errors['password_fail']; ?></p>
+                <?php endif; ?>
                 
                 <div class="container">
                     <input type="submit" value="Iniciar sesión" class="submit" name="login">

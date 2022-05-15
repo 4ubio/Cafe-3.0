@@ -1,14 +1,15 @@
 <?php 
-    //Importar la conexion
-    require '../includes/config/database.php';
-    $db = conectardb();
+    //Importar controlador de autenticación
+    require_once 'controllers/authController.php';
 
-    //Escribir el query y obtener el resultado
-    $query = "SELECT * FROM menu ORDER BY id ASC";
-    $resultQ1 = mysqli_query($db, $query);
+    //Verificar si existe una sesión iniciada
+    if(!$_SESSION['admin']){
+        header('Location: index.php');
+        exit();
+    }
 
-    //Guardamos el numero pasado por medio del URL, este sirve para mostrar mensajes
-    $resultGet = $_GET['result'] ?? null;
+    //Importar controlador de menu
+    require_once 'controllers/menuController.php';
 
     //Fecha actual
     $today = getdate();
@@ -44,7 +45,7 @@
                 <li><a class="nav-li active" href="menu.php">Menú</a></li>
                 <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
                 <li><a class="nav-li" href="usuarios.php">Usuarios</a></li>
-                <li><a class="nav-li" href="cerrarsesion.php">Cerrar sesión</a></li>
+                <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
             </ul>
         </div>
     </aside>

@@ -8,10 +8,6 @@ if (!$id) {
     header('location: /menu.php');
 }
 
-//Importar la conexion
-require 'includes/config/database.php';
-$db = conectardb();
-
 //Consultar la base de datos para obtener el platillo con el ID indicado en el URL
 $query = "SELECT * FROM menu WHERE id = ${id}";
 $result = mysqli_query($db, $query);
