@@ -60,7 +60,7 @@
             </div>
 
             <div class="info">
-                <p class="title"><?php echo $_SESSION['nombre'] ; ?></p>
+                <p class="title"><?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?></p>
                 <p>ID IEST: <span><b><?php echo $_SESSION['id-iest'] ; ?></b></span></p>
                 <p>Correo electronico: <span><b><?php echo $_SESSION['email'] ; ?></b></span></p>
                 <br>

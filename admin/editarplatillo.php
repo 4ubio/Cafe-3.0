@@ -90,7 +90,7 @@
 
                 <div class="form-comp">
                     <label for="price">Precio:</label>
-                    <input id="price" autocomplete="off" class="field" type="number" name="price" value="<?php echo $price; ?>">
+                    <input id="price" autocomplete="off" class="field" type="number" name="price" step=".01" value="<?php echo $price; ?>">
                 </div>
 
                 <div class="form-comp">
