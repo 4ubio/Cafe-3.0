@@ -1,5 +1,5 @@
 <?php 
-    require_once 'controllers/authController.php';
+require_once 'controllers/authController.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,8 @@
     <link rel="preload" href="styles/styles.css" as="style">
     <link rel="stylesheet" href="styles/styles.css">
 
+    <script src="https://kit.fontawesome.com/00d4455b7c.js" crossorigin="anonymous"></script>
+
     <title>Cafe 3.0</title>
 </head>
 <body>
@@ -32,9 +34,12 @@
                     <img src="assets/logo.png" alt="logo" class="logo_img">
                 </div>
                 
-                <div class="form_comp">
+                <div class="form_comp" id="email">
                     <img src="assets/email.png" alt="email" class="icon">
-                    <input id="email" autocomplete="off" name="email" type="email" placeholder="Correo institucional" class="field" value="<?php echo $email; ?>">
+                    <div class="grupo-input">
+                        <input id="email" autocomplete="off" name="email" type="email" placeholder="Correo institucional" class="field" value="<?php echo $email; ?>">
+                        <i class="validacion fa-solid fa-circle-xmark"></i>
+                    </div>  
                 </div>
 
                 <?php if(isset($errors['invalidEmail'])) : ?>
@@ -45,36 +50,47 @@
                     <p class="error"><?php echo $errors['emailExists']; ?></p>
                 <?php endif; ?>
 
-                <div class="form_comp">
+                <div class="form_comp" id="name">
                     <img src="assets/user_icon.png" alt="user" class="icon">
-                    <input autocomplete="off" name="name" type="text" placeholder="Nombre" class="field" value="<?php echo $name; ?>">
+                    <div class="grupo-input">
+                        <input id="name" autocomplete="off" name="name" type="text" placeholder="Nombre" class="field" value="<?php echo $name; ?>">
+                        <i class="validacion fa-solid fa-circle-xmark"></i>
+                    </div>
                 </div>
                 
                 <?php if(isset($errors['invalidName'])) : ?>
                     <p class="error"><?php echo $errors['invalidName']; ?></p>
                 <?php endif; ?>
 
-                <div class="form_comp">
+                <div class="form_comp" id="lastname">
                     <img src="assets/user_icon.png" alt="user" class="icon">
-                    <input autocomplete="off" name="lastname" type="text" placeholder="Apellido" class="field" value="<?php echo $lastname; ?>">
+                    <div class="grupo-input">
+                        <input autocomplete="off" name="lastname" type="text" placeholder="Apellido" class="field" value="<?php echo $lastname; ?>">
+                        <i class="validacion fa-solid fa-circle-xmark"></i>
+                    </div>
                 </div>
                 
                 <?php if(isset($errors['invalidLastName'])) : ?>
                     <p class="error"><?php echo $errors['invalidLastName']; ?></p>
                 <?php endif; ?>
 
-                <div class="form_comp">
+                <div class="form_comp" id="idiest">
                     <img src="assets/dolphin.png" alt="dolphin" class="icon">
-                    <input 
-                    onkeypress = "return isNumeric(event)"
-                    oninput = "maxLengthCheck(this)" 
-                    name="ID_IEST" 
-                    type="number" 
-                    placeholder="ID IEST"  
-                    min = "1"
-                    max = "99999"
-                    class="field" 
-                    value="<?php echo $idiest; ?>"/>
+                    <div class="grupo-input">
+                        <input
+                        id="idiest" 
+                        onkeypress = "return isNumeric(event)"
+                        oninput = "maxLengthCheck(this)" 
+                        name="ID_IEST" 
+                        type="number" 
+                        placeholder="ID IEST"  
+                        min = "1"
+                        max = "99999"
+                        class="field" 
+                        value="<?php echo $idiest; ?>"/>
+                        <i class="validacion fa-solid fa-circle-xmark"></i>
+                    </div>
+                    
                 </div>
                 
                 <?php if(isset($errors['invalidIdIest'])) : ?>
@@ -85,9 +101,13 @@
                     <p class="error"><?php echo $errors['idIestExists']; ?></p>
                 <?php endif; ?>
     
-                <div class="form_comp">
+                <div class="form_comp" id="password">
                     <img src="assets/password.png" alt="password" class="icon">
-                    <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field" value="<?php echo $password; ?>">
+                    <div class="grupo-input">
+                        <input autocomplete="off" name="password" type="password" placeholder="Contraseña" class="field" value="<?php echo $password; ?>">
+                        <i class="validacion fa-solid fa-circle-xmark"></i>
+                    </div>
+                    
                 </div>
                 
                 <?php if(isset($errors['password'])) : ?>
@@ -105,5 +125,6 @@
         </div>
     </div>
     <script src="js/idIest.js"></script>
+    <script src="js/formulario.js"></script>
 </body>
 </html>

@@ -130,6 +130,66 @@ body {
     width: 100%;
 }
 
+/*Validaciones JavaScript*/
+
+.grupo-input{
+    position: relative;
+}
+
+.validacion{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 100;
+    opacity: 0;
+    font-size: 2rem;
+}
+
+.correcto .validacion{
+    opacity: 1;
+    color: var(--daek_green);
+}
+
+.incorrecto .validacion{
+    opacity: 1;
+    color: var(--primary_color);
+}
+
+.error{
+    margin-left: 8rem;
+    font-size: 1.5rem;
+    color: rgb(182, 22, 22);
+}
+
+.submit {
+    background-color: var(--primary_color);
+    border: none;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 1.5rem 4rem;
+}
+
+.form_link {
+    color: var(--black);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .log_form {
+        width: 50rem;
+    }
+
+    .logo_img {
+        width: 22rem;
+    }
+}
+
 .error{
     margin-left: 8rem;
     font-size: 1.5rem;
