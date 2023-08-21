@@ -9,7 +9,7 @@ if (!$id) {
 }
 
 //Consultar la base de datos para obtener el platillo con el ID indicado en el URL
-$query = "SELECT * FROM menu WHERE id = ${id}";
+$query = "SELECT * FROM menu WHERE id = $id";
 $result = mysqli_query($db, $query);
 
 //Validación en caso de que el usuario modifique el URL por un ID no existente
@@ -19,4 +19,11 @@ if (!$result->num_rows) {
 
 //Guardamos la fila del platillo deseado
 $platillo = mysqli_fetch_assoc($result);
+
+//Redireccionar al seleccionar un platillo y cantidad
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cant = (int) $_POST['cant'];
+    $url = "confirmar_pedido.php?id=$id&cant=$cant";
+    header("Location: $url");
+}
 ?>

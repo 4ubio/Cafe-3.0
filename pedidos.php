@@ -7,6 +7,9 @@
         header('Location: index.php');
         exit();
     }
+
+    //Importar el controlador
+    require_once 'controllers/pedidosController.php';
 ?>
 
 <!DOCTYPE html>
@@ -50,55 +53,55 @@
         
     </header>
 
+    <?php if(intval($resultGet) === 1) : ?>
+        <p class="success__alert">Pedido registrado correctamente.</p>
+    <?php endif; ?>
+
     <h1>Tus pedidos</h1>
 
-    <div class="container food_order">
+    <?php foreach($result as $pedido):
+    
+        //Obtener progreso
+        if ($pedido['estado'] === 'En preparación') {
+            $progress = 20;
+        } else if ($pedido['estado'] === 'Listo para recoger') {
+            $progress = 60;
+        } else if ($pedido['estado'] === 'Entregado') {
+            $progress = 100;
+        }  
 
-        <div class="product_info container_info">
-            <img src="assets/food1.jpeg" alt="food" class="food_info_img">
-            <div class="info">
-                <h2 class="title">No. 12345</h2>
-                <p class="no_magin_top"><b>Chilaquiles de pollo</b></p>
-                <p class="no_magin_top">Fecha de pedido: <span> <b>20/04/2022</b> </span></p>
-                <p class="no_magin_top">Hora de pedido: <span> <b>4:20 PM</b> </span></p>
-                <p class="no_magin_top">Total: <span> <b>$65 MXN</b> </span></p>
+        //Obtener foto
+        $query = "SELECT * FROM menu WHERE id = $pedido[id_producto]";
+        $result = mysqli_query($db, $query);
+
+        //Guardamos la fila del platillo deseado
+        $platillo = mysqli_fetch_assoc($result);
+
+        //Guardamos la foto
+        $foto = $platillo['foto']
+    ?> 
+        <div class="container food_order">            
+            <div class="product_info container_info">
+                <img src="food/<?php echo $foto?>" alt="food" class="food_info_img">
+                <div class="info">
+                    <h2 class="title">No. <?php echo $pedido['id']; ?></h2>
+                    <p class="no_magin_top"><b><?php echo $pedido['nombre_platillo']; ?></b></p>
+                    <p class="no_magin_top">Fecha de pedido: <span> <b><?php echo $pedido['fecha']; ?></b> </span></p>
+                    <p class="no_magin_top">Hora de pedido: <span> <b><?php echo $pedido['hora']; ?></b> </span></p>
+                    <p class="no_magin_top">Total: <span> <b>$<?php echo $pedido['total']; ?> MXN</b> </span></p>
+                </div>
+            </div>
+            
+            <div class="div_progress">
+                <progress class="progress_bar" max="100" value="<?php echo $progress ?>"></progress>
+                <div class="progress_text">
+                    <p>En preparación</p>
+                    <p>Listo para recoger</p>
+                    <p>Entregado</p>
+                </div>
             </div>
         </div>
-        
-        <div class="div_progress">
-            <progress class="progress_bar" max="100" value="20"></progress>
-            <div class="progress_text">
-                <p>En preparación</p>
-                <p>Listo para recoger</p>
-                <p>Entregado</p>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container food_order">
-
-        <div class="product_info container_info">
-            <img src="assets/food2.jpeg" alt="food" class="food_info_img">
-            <div class="info">
-                <h2 class="title">No. 12346</h2>
-                <p class="no_magin_top"><b>Boneless BBQ</b></p>
-                <p class="no_magin_top">Fecha de pedido: <span> <b>20/04/2022</b> </span></p>
-                <p class="no_magin_top">Hora de pedido: <span> <b>4:20 PM</b> </span></p>
-                <p class="no_magin_top">Total: <span> <b>$80 MXN</b> </span></p>
-            </div>
-        </div>
-        
-        <div class="div_progress">
-            <progress class="progress_bar" max="100" value="60"></progress>
-            <div class="progress_text">
-                <p>En preparación</p>
-                <p>Listo para recoger</p>
-                <p>Entregado</p>
-            </div>
-        </div>
-
-    </div>
+    <?php endforeach; ?>
 
     <script src="js/mobile-menu.js"></script>
 </body>

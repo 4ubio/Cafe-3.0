@@ -8,8 +8,8 @@
         exit();
     }
     
-    //Importar controlador de autenticación
-    require_once 'controllers/entradaController.php';
+    //Importar el controlado
+    require_once 'controllers/confirmarPedidoController.php';
 ?>
 
 <!DOCTYPE html>
@@ -53,48 +53,44 @@
         
     </header>
 
-    <h1><?php echo $platillo['nombre'] ?></h1>
+    <h1>Confirmar pedido</h1>
 
     <div class="container">
 
-        <div class="product_info">
-            <img src="/food/<?php echo $platillo['foto'] ?>" alt="food" class="food_info_img">
+        <div class="confirm_info">
+            <img src="/food/<?php echo $platillo['foto'] ?>" alt="food" class="food_info_img_confirm">
 
             <div class="info">
-                <p class="no_magin_top"><?php echo $platillo['descripcion'] ?></p>
-                <p class="no_magin_top">Precio: <span> <b>$<?php echo $platillo['precio'] ?></b> </span></p>
+                <h2>Datos del pedido: </h2>
+                <p class="no_magin_top"> <b> <?php echo $platillo['nombre'] ?> </b> </p>
+                <p class="no_magin_top">Cantidad: <span> <b><?php echo $cant ?></b> </span> </p>
+                <p class="no_magin_top">Total: <span> <b>$<?php echo $total ?> MXN</b> </span></p>
                 <p class="no_magin_top">Tiempo de preparación: <span> <b><?php echo $platillo['tiempo'] ?> minutos</b> </span></p>
-                <p class="no_magin_top">Estado: <span> <b><?php echo $platillo['estado'] ?></b> </span></p>
+
+                <br>
+
+                <h2 >Datos del consumidor:</h2>
+                <p class="no_magin_top">Nombre: <span> <b> <?php echo $nombre; ?> </b> </span> </p>
+                <p class="no_magin_top">ID IEST: <span><b><?php echo $id_iest ; ?></b></span></p>
+                <p class="no_magin_top">Correo electronico: <span><b><?php echo $email ; ?></b></span></p>
                 
+                <br>
+
+                <h2 >Datos de pago:</h2>
+                <p class="no_magin_top">Forma de pago: <span> <b> Efectivo al entregar </b> </span> </p>
+                
+                <br>
+
                 <!--
                     Con este if, en caso de que el estado guardado del platillo
-                    sea Disponible, mostrara el formulario para seleccionar
-                    cantidad y el boton de pedir, en caso contrario, no mostrará
-                    nada.
+                    sea Disponible, mostrara el formulario para confirmar, en caso contrario, 
+                    no mostrará nada.
                 -->
                 
                 <?php if($platillo['estado'] === 'Disponible') : ?>
-                <form method="POST" enctype="multipart/form-data" class="product_form" novalidate>
-                    <div class="container3">
-                        <label>Cantidad: </label>
-                        <select name="cant" id="cant" class="select">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-
-                    <br>
-
+                <form method="POST" enctype="multipart/form-data" class="product_form">
                     <div class="">
-                        <input type="submit" value="Seleccionar" class="submit w-100">
+                        <input type="submit" value="Confirmar" class="submit w-100">
                     </div>
                 </form>
                 <?php endif; ?>

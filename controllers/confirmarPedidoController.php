@@ -1,0 +1,56 @@
+<?php 
+//Obtenemos el id del URL para poder realizar la consulta de que platillo mostrar
+$id = $_GET['id'];
+$id = filter_var($id, FILTER_VALIDATE_INT);
+
+$cant = $_GET['cant'];
+$cant = filter_var($cant, FILTER_VALIDATE_INT);
+
+//Validación en caso de que el usuario modifique el URL eliminando el ID o cantidad
+if (!$id) {
+    header('location: /menu.php');
+}
+
+if (!$cant) {
+    header('location: /menu.php');
+}
+
+//Consultar la base de datos para obtener el platillo con el ID indicado en el URL
+$query = "SELECT * FROM menu WHERE id = $id";
+$result = mysqli_query($db, $query);
+
+//Validación en caso de no existir el platillo
+if (!$result->num_rows) {
+    header('location: /menu.php');
+}
+
+//Guardamos la fila del platillo deseado
+$platillo = mysqli_fetch_assoc($result);
+
+//Datos del usuario para crear el pedido
+$nombre = $_SESSION['nombre'] . " " . $_SESSION['apellido'];
+$id_iest = $_SESSION['id-iest'];
+$email = $_SESSION['email'];
+$hora = date('H:i',time() - 21500);
+$fecha = date('Y/m/d');
+
+//Calcular total
+$nombre_platillo = $platillo['nombre'];
+$total = $platillo['precio'] * $cant;
+
+//Confirm
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //Inserta en la base de datos con este Query
+    $query = "INSERT INTO pedidos (id_producto, nombre_platillo, cantidad, total, cliente, id_iest, hora, fecha, estado)
+    VALUES ('$id', '$nombre_platillo', '$cant', '$total', '$nombre', '$id_iest', '$hora', '$fecha', 'En preparación') ";
+
+    $result = mysqli_query($db, $query);
+
+    //Redireccionar en caso de todo correcto y 
+    //pasar un número para mostrar un mensaje
+    if ($result) {
+        header("Location: /pedidos.php?result=1");
+    }
+}
+?>

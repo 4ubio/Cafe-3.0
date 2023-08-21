@@ -297,10 +297,24 @@ body {
     width: 95%;
 }
 
+.confirm_info {
+    background-color: var(--gray);
+    border-radius: 2rem;
+    display: block;
+    text-align: center;
+    padding: 3rem;
+    width: 90%;
+}
+
 .food_info_img {
     border-radius: 2rem;
     margin-bottom: 2rem;
     width: 100%;
+}
+
+.food_info_img_confirm {
+    border-radius: 2rem;
+    width: 50%;
 }
 
 .info {
@@ -465,4 +479,30 @@ body {
 
 .height_auto {
     height: auto;
+}
+
+/*Alerts*/
+
+.error__alert {
+    padding: .5rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin: 1rem 5rem;
+    border-radius: .7rem;
+    background-color: red;
+}
+
+.success__alert {
+    padding: .5rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 1rem 5rem;
+    border-radius: .7rem;
+    background-color: green;
 }
