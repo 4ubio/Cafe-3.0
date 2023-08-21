@@ -141,8 +141,8 @@ body{
 
 .table-container{
     overflow-y: scroll;
-    height: 70vh;
 }
+
 .table-menu{
     margin: 0 auto;
     width: 95%;

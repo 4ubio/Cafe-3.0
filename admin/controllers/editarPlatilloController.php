@@ -9,7 +9,7 @@
     }
 
     //Consultar la base de datos para obtener el platillo con el ID indicado en el URL
-    $query1 = "SELECT * FROM menu WHERE id = ${id}";
+    $query1 = "SELECT * FROM menu WHERE id = $id";
     $result1 = mysqli_query($db, $query1);
 
     //Validación en caso de que el usuario modifique el URL por un ID no existente
@@ -89,13 +89,13 @@
 
             //Actualiza en la base de datos
             $query2 = "UPDATE menu SET 
-                    nombre = '${name}',
-                    foto = '${picName}',
-                    precio = ${price},
-                    descripcion = '${desc}',
-                    estado = '${status}',
-                    tiempo = ${time}
-                    WHERE id = ${id}";
+                    nombre = '$name',
+                    foto = '$picName',
+                    precio = $price,
+                    descripcion = '$desc',
+                    estado = '$status',
+                    tiempo = $time
+                    WHERE id = $id";
 
             $result2 = mysqli_query($db, $query2);
 

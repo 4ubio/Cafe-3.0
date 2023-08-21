@@ -7,6 +7,9 @@
         header('Location: index.php');
         exit();
     }
+
+    //Importar controlador
+    require_once 'controllers/pedidosController.php';
     
     //Fecha actual
     $today = getdate();
@@ -55,71 +58,127 @@
             <div class="line3"></div>
         </div>
 
+        <?php if(intval($resultGet) === 1) : ?>
+            <p class="success__alert">Pedido actualizado correctamente</p>
+        <?php endif; ?>
+
         <div class="title">
-            <h1>Pendiente</h1>
+            <h1>En preparación</h1>
         </div>
         
         <div class="table-container">
             <table class="table-menu">
                 <tr class="headers">
                     <th># de seguimiento</th>
-                    <th>pedido</th>
-                    <th>cantidad</th>
+                    <th>Platillo</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Cliente</th>
                     <th>ID Alumno</th>
                     <th>Hora de pedido</th>
+                    <th>Fecha de pedido</th>
                     <th>Estado</th> 
+                    <th>Editar</th> 
                 </tr>
-                    
+
+                <?php while($pedido = mysqli_fetch_assoc($resultQ1)) : ?> 
                 <tr>
-                    <td>0019</td>
-                    <td>Boneless</td>
-                    <td>2</td>
-                    <td>19327</td>
-                    <td>07:50</td>
+                    <td><?php echo $pedido['id'] ?></td>
+                    <td><?php echo $pedido['nombre_platillo'] ?></td>
+                    <td><?php echo $pedido['cantidad'] ?></td>
+                    <td>$<?php echo $pedido['total'] ?></td>
+                    <td><?php echo $pedido['cliente'] ?></td>
+                    <td><?php echo $pedido['id_iest'] ?></td>
+                    <td><?php echo $pedido['hora'] ?></td>
+                    <td><?php echo $pedido['fecha'] ?></td>
+                    <td><?php echo $pedido['estado'] ?></td>
                     <td>
-                        <div class="custom-select">
-                            <select name="" id="" class="field select pedido">
-                                <option value="">Pendiente</option>
-                                <option value="">En preparación</option>
-                                <option value="">Listo para entrega</option>
-                            </select>
-                        </div>
+                        <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
                     </td>
                 </tr>
 
+                <?php endwhile; ?>
+
+            </table>
+        </div>
+
+        <div class="title">
+            <h1>Listo para recoger</h1>
+        </div>
+        
+        <div class="table-container">
+            <table class="table-menu">
+                <tr class="headers">
+                    <th># de seguimiento</th>
+                    <th>Platillo</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Cliente</th>
+                    <th>ID Alumno</th>
+                    <th>Hora de pedido</th>
+                    <th>Fecha de pedido</th>
+                    <th>Estado</th> 
+                    <th>Editar</th> 
+                </tr>
+
+                <?php while($pedido = mysqli_fetch_assoc($resultQ2)) : ?> 
                 <tr>
-                    <td>0020</td>
-                    <td>Hamburguesa</td>
-                    <td>1</td>
-                    <td>19506</td>
-                    <td>09:20</td>
+                    <td><?php echo $pedido['id'] ?></td>
+                    <td><?php echo $pedido['nombre_platillo'] ?></td>
+                    <td><?php echo $pedido['cantidad'] ?></td>
+                    <td>$<?php echo $pedido['total'] ?></td>
+                    <td><?php echo $pedido['cliente'] ?></td>
+                    <td><?php echo $pedido['id_iest'] ?></td>
+                    <td><?php echo $pedido['hora'] ?></td>
+                    <td><?php echo $pedido['fecha'] ?></td>
+                    <td><?php echo $pedido['estado'] ?></td>
                     <td>
-                        <div class="custom-select">
-                            <select name="" id="" class="field select pedido">
-                                <option value="">Pendiente</option>
-                                <option value="">En preparación</option>
-                                <option value="">Listo para entrega</option>
-                            </select>
-                        </div>
+                        <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
                     </td>
                 </tr>
 
+                <?php endwhile; ?>
+
+            </table>
+        </div>
+
+        <div class="title">
+            <h1>Entregado</h1>
+        </div>
+        
+        <div class="table-container">
+            <table class="table-menu">
+                <tr class="headers">
+                    <th># de seguimiento</th>
+                    <th>Platillo</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Cliente</th>
+                    <th>ID Alumno</th>
+                    <th>Hora de pedido</th>
+                    <th>Fecha de pedido</th>
+                    <th>Estado</th> 
+                    <th>Editar</th> 
+                </tr>
+
+                <?php while($pedido = mysqli_fetch_assoc($resultQ3)) : ?> 
                 <tr>
-                    <td>0021</td>
-                    <td>Enchiladas</td>
-                    <td>1</td>
-                    <td>$20081</td>
-                    <td>14:30</td>
+                    <td><?php echo $pedido['id'] ?></td>
+                    <td><?php echo $pedido['nombre_platillo'] ?></td>
+                    <td><?php echo $pedido['cantidad'] ?></td>
+                    <td>$<?php echo $pedido['total'] ?></td>
+                    <td><?php echo $pedido['cliente'] ?></td>
+                    <td><?php echo $pedido['id_iest'] ?></td>
+                    <td><?php echo $pedido['hora'] ?></td>
+                    <td><?php echo $pedido['fecha'] ?></td>
+                    <td><?php echo $pedido['estado'] ?></td>
                     <td>
-                        <div class="custom-select">
-                            <select name="" id="" class="field select pedido">
-                                <option value="">Pendiente</option>
-                                <option value="">En preparación</option>
-                                <option value="">Listo para entrega</option>
-                            </select>
-                        </div>
+                        <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
                     </td>
                 </tr>
+
+                <?php endwhile; ?>
+
             </table>
         </div>
        
