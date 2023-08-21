@@ -65,6 +65,14 @@
                 <div class="container">
                     <a class="form_link" href="register.php">O registrate ya</a>
                 </div>
+
+                <div class="container">
+                    <a href="map.php" class="form_link">Ubicación</a>
+                </div>
+
+                <div class="container">
+                    <a href="us.php" class="form_link">Conocer más</a>
+                </div>
             </form>
         </div>
     </div>
