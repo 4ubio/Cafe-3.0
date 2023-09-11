@@ -3,11 +3,14 @@
     require_once 'controllers/authController.php';
 
     //Verificar si existe una sesión iniciada
-    if(!$_SESSION['admin']){
+    if(!$_SESSION['admin_pedidos']){
         header('Location: index.php');
         exit();
     }
-    
+
+    //Importar controlador creador de platillos
+    require_once 'controllers/editarPedidosController.php';
+
     //Fecha actual
     $today = getdate();
 ?>
@@ -31,6 +34,7 @@
 </head>
 <body>
     <aside class="sidebar">
+
         <div class="sidebar-logo">
             <img src="/assets/Cafe2.png" alt="logo">
             <h1>Administración</h1>
@@ -38,11 +42,7 @@
 
         <div class="sidebar-nav">
             <ul class="navigation">
-                <li><a class="nav-li" href="panel.php">Panel de control</a></li>
-                <li><a class="nav-li" href="menu.php">Menú</a></li>
-                <li><a class="nav-li" href="crearpedido.php">Crear pedido</a></li>
-                <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
-                <li><a class="nav-li active" href="usuarios.php">Usuarios</a></li>
+                <li><a class="nav-li active" href="pedidos.php">Pedidos</a></li>
                 <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
             </ul>
         </div>
@@ -57,29 +57,57 @@
         </div>
 
         <div class="title">
-            <h1>Nuevo Usuario</h1>
+            <h1>Editar Pedido</h1>
         </div>
 
         <div class="form">
-            <form class="new-form user" action="" method="">
+            <form class="new-form" method="POST" enctype="multipart/form-data">
                 <div class="form-comp">
-                    <label for="">Nombre:</label>
-                    <input type="text" class="field">
+                    <label for="name">ID pedido:</label>
+                    <p><b><?php echo $pedido['id'] ?></b></p>
                 </div>
 
                 <div class="form-comp">
-                    <label for="">Apellidos:</label>
-                    <input type="text" class="field">
+                    <label for="name">Platillo:</label>
+                    <p> <b><?php echo $pedido['nombre_platillo'] ?></b></p>
                 </div>
 
                 <div class="form-comp">
-                    <label for="">ID-IEST:</label>
-                    <input type="number" class="field">
+                    <label for="name">Cantidad:</label>
+                    <p><b><?php echo $pedido['cantidad'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
+                    <label for="name">Total:</label>
+                    <p>$<b><?php echo $pedido['total'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
+                    <label for="name">Cliente:</label>
+                    <p><b><?php echo $pedido['cliente'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
+                    <label for="name">ID IEST:</label>
+                    <p><b><?php echo $pedido['id_iest'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
+                    <label for="status">Estado:</label>
+                    <div class="custom-select">
+                        <select id="status" class="field select" name="status">
+                            <option value="En preparación">En preparación</option>
+                            <option value="Listo para recoger">Listo para recoger</option>
+                            <option value="Entregado">Entregado</option>
+                        </select>
+                    </div>
+                    
                 </div>
 
                 <div class="form-comp submit">
-                    <button class="btn guardar">Crear</button>
+                    <input type="submit" value="Actualizar" class="btn guardar"></input>
                 </div>
+
             </form>
         </div>
        

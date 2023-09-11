@@ -37,14 +37,14 @@
                 $user2 = mysqli_fetch_assoc($userResult);
 
                 //Si es admin
-                if ($user2['tipo'] === '1') {
+                if ($user2['tipo'] === '2') {
 
                     //Verificamos si la contraseña coincide
                     if(password_verify($password, $user2['password'])){
-                        $_SESSION['admin'] = $user2['email'];
+                        $_SESSION['admin_pedidos'] = $user2['email'];
     
                         //Reedireccionamos a menu
-                        header('Location: /admin/panel.php');
+                        header('Location: /admin_pedidos/pedidos.php');
                         exit();
                         
                     }else{
@@ -63,7 +63,7 @@
     //Cerrar sesión de usuario admin
     if(isset($_GET['logout'])){
         session_destroy();
-        unset($_SESSION['admin']);
+        unset($_SESSION['admin_pedidos']);
         header('Location: index.php');
         exit();
     }

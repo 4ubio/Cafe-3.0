@@ -7,7 +7,10 @@
         header('Location: index.php');
         exit();
     }
-    
+
+    //Importar controlador creador de platillos
+    require_once 'controllers/crearPedidoController.php';
+
     //Fecha actual
     $today = getdate();
 ?>
@@ -40,9 +43,9 @@
             <ul class="navigation">
                 <li><a class="nav-li" href="panel.php">Panel de control</a></li>
                 <li><a class="nav-li" href="menu.php">Menú</a></li>
-                <li><a class="nav-li" href="crearpedido.php">Crear pedido</a></li>
+                <li><a class="nav-li active" href="crearpedido.php">Crear pedido</a></li>
                 <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
-                <li><a class="nav-li active" href="usuarios.php">Usuarios</a></li>
+                <li><a class="nav-li" href="usuarios.php">Usuarios</a></li>
                 <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
             </ul>
         </div>
@@ -57,29 +60,48 @@
         </div>
 
         <div class="title">
-            <h1>Editar Usuario</h1>
+            <h1>Nuevo Pedido</h1>
         </div>
 
+
+        <!--Mostrar todos los errores dentro del arreglo-->
+        <?php foreach($mistakes as $mistake) : ?>
+            <div class="error__alert">
+                <?php echo $mistake ?>
+            </div>
+        <?php endforeach; ?>
+        
+        <!--
+            Los value son para que el usuario, en
+            caso de error, no tengan que escribir todo
+            otra vez en cada campo
+        -->
+
         <div class="form">
-            <form class="new-form user" action="" method="">
+            <form class="new-form" action="/admin/crearpedido.php" method="POST" enctype="multipart/form-data">
+                
                 <div class="form-comp">
-                    <label for="">Nombre:</label>
-                    <input type="text" class="field">
+                    <label>Platillo</label>
+                    <select name="platillo" class="select">
+                        <option value="">-- Seleccione --</option>
+                        <?php while($platillo = mysqli_fetch_assoc($menu)) : ?>
+                            <option value= "<?php echo $platillo['id']; ?>" > <?php echo $platillo['nombre']; ?> </option>
+                        <?php endwhile; ?>
+                    </select>
                 </div>
 
                 <div class="form-comp">
-                    <label for="">Apellidos:</label>
-                    <input type="text" class="field">
+                    <label for="price">ID IEST:</label>
+                    <input id="price" autocomplete="off" class="field" type="number" name="id_iest" value="<?php echo $id_iest; ?>">
                 </div>
-
+                            
                 <div class="form-comp">
-                    <label for="">ID-IEST:</label>
-                    <input type="number" class="field">
+                    <label for="name">Nombre:</label>
+                    <input id="name" autocomplete="off" class="field" type="text" name="name" value="<?php echo $nombre; ?>">
                 </div>
 
                 <div class="form-comp submit">
-                    <button class="btn">Eliminar</button>
-                    <button class="btn guardar">Guardar</button>
+                    <input type="submit" value="Crear" class="btn guardar"></input>
                 </div>
             </form>
         </div>
@@ -87,6 +109,11 @@
     </main>
 
     <script src="../js/admin.js"></script>
+
+    <!--
+        Aqui se imprime la fecha en formato:
+        Weekday Monthday, Month, Year
+    -->
 
     <footer>
         <p><?php echo $today['weekday'] . " " . $today['mday'] . ", " . $today['month'] . ", " . $today['year']?></p>

@@ -3,7 +3,7 @@
     require_once 'controllers/authController.php';
 
     //Verificar si existe una sesión iniciada
-    if(!$_SESSION['admin']){
+    if(!$_SESSION['admin_pedidos']){
         header('Location: index.php');
         exit();
     }
@@ -41,11 +41,7 @@
 
         <div class="sidebar-nav">
             <ul class="navigation">
-                <li><a class="nav-li" href="panel.php">Panel de control</a></li>
-                <li><a class="nav-li" href="menu.php">Menú</a></li>
-                <li><a class="nav-li" href="crearpedido.php">Crear pedido</a></li>
                 <li><a class="nav-li active" href="pedidos.php">Pedidos</a></li>
-                <li><a class="nav-li" href="usuarios.php">Usuarios</a></li>
                 <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
             </ul>
         </div>
@@ -61,9 +57,6 @@
 
         <?php if(intval($resultGet) === 1) : ?>
             <p class="success__alert">Pedido actualizado correctamente</p>
-        <?php endif; ?>
-        <?php if(intval($resultGet) === 2) : ?>
-            <p class="success__alert">Pedido creado correctamente</p>
         <?php endif; ?>
 
         <div class="title">

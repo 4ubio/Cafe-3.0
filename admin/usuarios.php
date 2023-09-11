@@ -7,6 +7,9 @@
         header('Location: index.php');
         exit();
     }
+
+    //Importar controlador de menu
+    require_once 'controllers/usuariosController.php';
     
     //Fecha actual
     $today = getdate();
@@ -40,6 +43,7 @@
             <ul class="navigation">
                 <li><a class="nav-li" href="panel.php">Panel de control</a></li>
                 <li><a class="nav-li" href="menu.php">Menú</a></li>
+                <li><a class="nav-li" href="crearpedido.php">Crear pedido</a></li>
                 <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
                 <li><a class="nav-li active" href="usuarios.php">Usuarios</a></li>
                 <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
@@ -63,32 +67,25 @@
         <div class="table-container">
             <table class="table-menu">
                 <tr class="headers">
-                    <th>ID</th>
+                    <th>ID IEST</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
-                    <th>ID-IEST</th>
+                    <th>Email</th>
                     <th>Acciones</th> 
                 </tr>
-                    
-                <tr>
-                    <td>1</td>
-                    <td>Gerardo</td>
-                    <td>Gómez Schekaibán</td>
-                    <td>19327</td>
-                    <td>
-                        <a href="editarusuario.php"><button class="btn-editar">Editar</button></a>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td>Sebastián</td>
-                    <td>Rubio Quiroz</td>
-                    <td>19328</td>
-                    <td>
-                        <a href="editarusuario.php"><button class="btn-editar">Editar</button></a>
-                    </td>
-                </tr>
+                <?php while($user = mysqli_fetch_assoc($resultQ1)) :?> 
+                    <tr>
+                        <td><?php echo $user['id_iest'] ?></td>
+                        <td><?php echo $user['nombre'] ?></td>
+                        <td><?php echo $user['apellido'] ?></td>
+                        <td><?php echo $user['email'] ?></td>
+                        <td>
+                            <a href="editarusuario.php"><button class="btn-editar">Editar</button></a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+
             </table>
         </div>
        
