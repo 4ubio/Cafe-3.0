@@ -20,6 +20,19 @@ if (!$result->num_rows) {
 //Guardamos la fila del platillo deseado
 $platillo = mysqli_fetch_assoc($result);
 
+// ----- Fijar tiempo dinámico -----
+//Obtener número de platillos en preparación
+$query_pedidos = "SELECT * FROM pedidos WHERE estado = 'En preparación'";
+$result_pedidos = mysqli_query($db, $query_pedidos);
+$num_pedidos = $result_pedidos->num_rows;
+
+if ($num_pedidos < 10) {
+    $tiempo = $platillo['tiempo'];
+} else {
+    $multiplos = intdiv($num_pedidos, 10);
+    $tiempo = $platillo['tiempo'] * ($multiplos + 1);
+}
+
 //Redireccionar al seleccionar un platillo y cantidad
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cant = (int) $_POST['cant'];

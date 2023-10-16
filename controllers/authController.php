@@ -62,10 +62,11 @@
             //Encriptamos contraseña, #respetamos la privacidad del usuario
             $password = password_hash($password, PASSWORD_DEFAULT);
             $userType = 0;
+            $status = 'Activo';
 
             //Insertamos el registro
-            $sql = "INSERT into usuarios (id_iest, nombre, apellido, email, password, tipo) 
-            VALUES ('$idiest', '$name', '$lastname','$email', '$password', '$userType')";
+            $sql = "INSERT into usuarios (id_iest, nombre, apellido, email, password, tipo, estado) 
+            VALUES ('$idiest', '$name', '$lastname','$email', '$password', '$userType', '$status)";
             $insertUser = mysqli_query($db, $sql);
             
             if($insertUser){
@@ -74,6 +75,7 @@
                 $_SESSION['nombre'] = $name;
                 $_SESSION['apellido'] = $lastname;
                 $_SESSION['email'] = $email;
+                $_SESSION['estado'] = $status;
 
                 //Reedireccionamos a menu
                 header('Location: menu.php');
@@ -114,6 +116,7 @@
                     $_SESSION['nombre'] = $user['nombre'];
                     $_SESSION['apellido'] = $user['apellido'];
                     $_SESSION['email'] = $user['email'];
+                    $_SESSION['estado'] = $user['estado'];
 
                     //Reedireccionamos a menu
                     header('Location: menu.php');

@@ -38,6 +38,19 @@ $fecha = date('Y/m/d');
 $nombre_platillo = $platillo['nombre'];
 $total = $platillo['precio'] * $cant;
 
+// ----- Fijar tiempo dinámico -----
+//Obtener número de platillos en preparación
+$query_pedidos = "SELECT * FROM pedidos WHERE estado = 'En preparación'";
+$result_pedidos = mysqli_query($db, $query_pedidos);
+$num_pedidos = $result_pedidos->num_rows;
+
+if ($num_pedidos < 10) {
+    $tiempo = $platillo['tiempo'];
+} else {
+    $multiplos = intdiv($num_pedidos, 10);
+    $tiempo = $platillo['tiempo'] * ($multiplos + 1);
+}
+
 //Confirm
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

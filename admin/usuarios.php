@@ -61,9 +61,12 @@
 
         <div class="title">
             <h1>Usuarios</h1>
-            <a href="nuevousuario.php"><button class="btn">Crear Usuario</button></a>
         </div>
-        
+
+        <?php if(intval($resultGet) === 1) : ?>
+            <p class="success__alert">Usuario editado correctamente</p>
+        <?php endif; ?>
+
         <div class="table-container">
             <table class="table-menu">
                 <tr class="headers">
@@ -71,6 +74,7 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Email</th>
+                    <th>Estado</th>
                     <th>Acciones</th> 
                 </tr>
 
@@ -80,8 +84,9 @@
                         <td><?php echo $user['nombre'] ?></td>
                         <td><?php echo $user['apellido'] ?></td>
                         <td><?php echo $user['email'] ?></td>
+                        <td><?php echo $user['estado'] ?></td>
                         <td>
-                            <a href="editarusuario.php"><button class="btn-editar">Editar</button></a>
+                            <a href="editarusuario.php?id=<?php echo $user['id_iest']; ?>"><button class="btn-editar">Editar</button></a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

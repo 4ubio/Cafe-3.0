@@ -63,6 +63,7 @@
                 <p class="title"><?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?></p>
                 <p>ID IEST: <span><b><?php echo $_SESSION['id-iest'] ; ?></b></span></p>
                 <p>Correo electronico: <span><b><?php echo $_SESSION['email'] ; ?></b></span></p>
+                <p>Estado: <span><b><?php echo $_SESSION['estado'] ; ?></b></span></p>
                 <br>
                 <a href="pedidos.php" class="link_button">Ir a tus pedidos</a>
             </div>

@@ -65,7 +65,7 @@
                 <p class="no_magin_top"> <b> <?php echo $platillo['nombre'] ?> </b> </p>
                 <p class="no_magin_top">Cantidad: <span> <b><?php echo $cant ?></b> </span> </p>
                 <p class="no_magin_top">Total: <span> <b>$<?php echo $total ?> MXN</b> </span></p>
-                <p class="no_magin_top">Tiempo de preparación: <span> <b><?php echo $platillo['tiempo'] ?> minutos</b> </span></p>
+                <p class="no_magin_top">Tiempo de preparación estimado: <span> <b><?php echo $tiempo ?> minutos</b> </span></p>
 
                 <br>
 
@@ -81,20 +81,25 @@
                 
                 <br>
 
-                <!--
-                    Con este if, en caso de que el estado guardado del platillo
-                    sea Disponible, mostrara el formulario para confirmar, en caso contrario, 
-                    no mostrará nada.
-                -->
-                
-                <?php if($platillo['estado'] === 'Disponible') : ?>
-                <form method="POST" enctype="multipart/form-data" class="product_form">
-                    <div class="">
-                        <input type="submit" value="Confirmar" class="submit w-100">
-                    </div>
-                </form>
-                <?php endif; ?>
+                <?php if($_SESSION['estado'] !== 'Bloqueado') : ?>
 
+                    <!--
+                        Con este if, en caso de que el estado guardado del platillo
+                        sea Disponible, mostrara el formulario para confirmar, en caso contrario, 
+                        no mostrará nada.
+                    -->
+                    
+                    <?php if($platillo['estado'] === 'Disponible') : ?>
+                    <form method="POST" enctype="multipart/form-data" class="product_form">
+                        <div class="">
+                            <input type="submit" value="Confirmar" class="submit w-100">
+                        </div>
+                    </form>
+                    <?php endif; ?>
+                
+                <?php else : ?>
+                    <p class="no_magin_top"><b>Actualmente te encuentras bloqueado de la plataforma por mal uso. Si crees que se trata de un error, cierra y vuelve a iniciar sesión.</b></p>
+                <?php endif; ?>
             </div>
         </div>
     </div>

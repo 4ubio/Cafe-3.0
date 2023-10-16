@@ -63,42 +63,47 @@
             <div class="info">
                 <p class="no_magin_top"><?php echo $platillo['descripcion'] ?></p>
                 <p class="no_magin_top">Precio: <span> <b>$<?php echo $platillo['precio'] ?></b> </span></p>
-                <p class="no_magin_top">Tiempo de preparación: <span> <b><?php echo $platillo['tiempo'] ?> minutos</b> </span></p>
+                <p class="no_magin_top">Tiempo de preparación estimado: <span> <b><?php echo $tiempo ?> minutos</b> </span></p>
                 <p class="no_magin_top">Estado: <span> <b><?php echo $platillo['estado'] ?></b> </span></p>
                 
-                <!--
-                    Con este if, en caso de que el estado guardado del platillo
-                    sea Disponible, mostrara el formulario para seleccionar
-                    cantidad y el boton de pedir, en caso contrario, no mostrará
-                    nada.
-                -->
-                
-                <?php if($platillo['estado'] === 'Disponible') : ?>
-                <form method="POST" enctype="multipart/form-data" class="product_form" novalidate>
-                    <div class="container3">
-                        <label>Cantidad: </label>
-                        <select name="cant" id="cant" class="select">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
+                <?php if($_SESSION['estado'] !== 'Bloqueado') : ?>
+                    
+                    <!--
+                        Con este if, en caso de que el estado guardado del platillo
+                        sea Disponible, mostrara el formulario para seleccionar
+                        cantidad y el boton de pedir, en caso contrario, no mostrará
+                        nada.
+                    -->
+                    
+                    <?php if($platillo['estado'] === 'Disponible') : ?>
+                    <form method="POST" enctype="multipart/form-data" class="product_form" novalidate>
+                        <div class="container3">
+                            <label>Cantidad: </label>
+                            <select name="cant" id="cant" class="select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
 
-                    <br>
+                        <br>
 
-                    <div class="">
-                        <input type="submit" value="Seleccionar" class="submit w-100">
-                    </div>
-                </form>
+                        <div class="">
+                            <input type="submit" value="Seleccionar" class="submit w-100">
+                        </div>
+                    </form>
+                    <?php endif; ?>
+
+                <?php else : ?>
+                    <p class="no_magin_top"><b>Actualmente te encuentras bloqueado de la plataforma por mal uso. Si crees que se trata de un error, cierra y vuelve a iniciar sesión.</b></p>
                 <?php endif; ?>
-
             </div>
         </div>
     </div>

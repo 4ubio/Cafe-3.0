@@ -7,6 +7,9 @@
         header('Location: index.php');
         exit();
     }
+
+    //Importar controlador de menu
+    require_once 'controllers/editarUsuarioController.php';
     
     //Fecha actual
     $today = getdate();
@@ -61,24 +64,38 @@
         </div>
 
         <div class="form">
-            <form class="new-form user" action="" method="">
+            <form class="new-form user" method="POST">
                 <div class="form-comp">
                     <label for="">Nombre:</label>
-                    <input type="text" class="field">
+                    <p><b><?php echo $user['nombre'] ?></b></p>
                 </div>
 
                 <div class="form-comp">
                     <label for="">Apellidos:</label>
-                    <input type="text" class="field">
+                    <p><b><?php echo $user['apellido'] ?></b></p>
                 </div>
 
                 <div class="form-comp">
-                    <label for="">ID-IEST:</label>
-                    <input type="number" class="field">
+                    <label for="">ID IEST:</label>
+                    <p><b><?php echo $user['id_iest'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
+                    <label for="">Estado:</label>
+                    <p><b><?php echo $user['estado'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
+                    <label for="estado">Editar estado:</label>
+                    <div class="custom-select">
+                        <select id="estado" class="field select" name="estado">
+                            <option value="Activo">Activo</option>
+                            <option value="Bloqueado">Bloqueado</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-comp submit">
-                    <button class="btn">Eliminar</button>
                     <button class="btn guardar">Guardar</button>
                 </div>
             </form>

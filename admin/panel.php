@@ -7,6 +7,8 @@
         header('Location: index.php');
         exit();
     }
+
+    require_once 'controllers/panelController.php';
     
     //Fecha actual
     $today = getdate();
@@ -62,23 +64,23 @@
         
         <div class="cards-container">
             <div class="card">
-                <p>Pendientes</p>
-                <h1>2</h1>
+                <p>En preparación</p>
+                <h1><?php echo $num_preparacion ?></h1>
             </div>
 
             <div class="card">
-                <p>En preparación</p>
-                <h1>2</h1>
+                <p>Listos para recoger</p>
+                <h1><?php echo $num_listos ?></h1>
             </div>
 
             <div class="card">
                 <p>Entregas del día</p>
-                <h1>2</h1>
+                <h1><?php echo $num_entregados ?></h1>
             </div>
 
             <div class="card">
                 <p>Ingresos del día</p>
-                <h1>$1500</h1>
+                <h1>$<?php echo $total ?></h1>
             </div>
         </div>
     </main>

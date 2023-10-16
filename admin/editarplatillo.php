@@ -107,7 +107,6 @@
                             <option value="No Disponible">No Disponible</option>
                         </select>
                     </div>
-                    
                 </div>
 
                 <div class="form-comp">
