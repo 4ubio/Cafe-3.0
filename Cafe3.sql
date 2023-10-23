@@ -5,8 +5,9 @@ CREATE TABLE `usuarios` (
   `email` varchar(100) DEFAULT NULL,
   `password` char(60) DEFAULT NULL,
   `tipo` int(3) DEFAULT NULL,
+  `estado` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id_iest`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -17,7 +18,7 @@ CREATE TABLE `menu` (
   `estado` varchar(20) DEFAULT NULL,
   `tiempo` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;;
 
 CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -35,6 +36,8 @@ CREATE TABLE `pedidos` (
   KEY `id_iest` (`id_iest`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `menu` (`id`) ON DELETE CASCADE,
   CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_iest`) REFERENCES `usuarios` (`id_iest`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;;
 
-INSERT INTO `usuarios` (`id_iest`, `nombre`, `apellido`, `email`, `password`, `tipo`) VALUES (1, '', '', 'Admin', '$2y$10$VVixMghlEJ8mI5rYlWg7IOmLkG.8WvMzqVcKUwIXdfvTxsk/1oK3O', 1);
+INSERT INTO `usuarios` (`id_iest`, `nombre`, `apellido`, `email`, `password`, `tipo`, `estado`) VALUES
+(1, '', '', 'Admin', '$2y$10$VVixMghlEJ8mI5rYlWg7IOmLkG.8WvMzqVcKUwIXdfvTxsk/1oK3O', 1, 'Activo'),
+(2, '', '', 'Admin_pedidos', '$2y$10$8taiHlQ7eq7qGL4xNKdopO0HZz0tDeVI.xFZDKvXiAWj9i/yFdbR2', 2, 'Activo')

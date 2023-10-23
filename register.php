@@ -1,5 +1,5 @@
 <?php 
-require_once 'controllers/authController.php';
+    require_once 'controllers/authController.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ require_once 'controllers/authController.php';
 <body>
     <div class="index_background container">
         <div class="">
-            <form id=formulario method="post" action="" class="log_form">
+            <form method="post" action="" class="log_form" novalidate>
                 <div class="container">
                     <img src="assets/logo.png" alt="logo" class="logo_img">
                 </div>
