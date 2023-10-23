@@ -66,7 +66,7 @@
 
             //Insertamos el registro
             $sql = "INSERT into usuarios (id_iest, nombre, apellido, email, password, tipo, estado) 
-            VALUES ('$idiest', '$name', '$lastname','$email', '$password', '$userType', '$status)";
+            VALUES ('$idiest', '$name', '$lastname','$email', '$password', '$userType', '$status')";
             $insertUser = mysqli_query($db, $sql);
             
             if($insertUser){

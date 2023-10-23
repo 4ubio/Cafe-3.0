@@ -50,8 +50,3 @@ inputs.forEach((input) => {
     //Cuando se da click fuera del campo
     input.addEventListener('blur', validarFormulario);
 });
-
-
-formulario.addEventListener('submit', () => {
-
-});
