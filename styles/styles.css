@@ -31,6 +31,7 @@ h1 {
 
 h2 {
     font-size: 2.5rem;
+    text-align: center;
 }
 
 body {
@@ -259,6 +260,42 @@ body {
 
 /**Menu**/
 
+.link_area {
+    text-decoration: none;
+}
+
+.cards-container{
+    margin: 2.5rem auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 70%;
+}
+
+.card{
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: var(--gray);
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color: var(--med_gray);
+}
+
+.card p{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+.card h1{
+    color: var(--primary_color);
+    text-align: right;
+    font-size: 3rem;
+}
+
 .product {
     display: block;
     margin-bottom: 2rem;
@@ -284,6 +321,13 @@ body {
     .food_img {
         width: 80%;
         height: 20rem;
+    }
+}
+
+@media (max-width: 480px){
+    .cards-container{
+        grid-template-columns: repeat(1, 1fr);
+        width: 70%;
     }
 }
 

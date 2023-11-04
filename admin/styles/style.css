@@ -26,6 +26,21 @@ body{
 
 /*GLOBALS*/
 
+/* TABS */
+
+.tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.show_section {
+    display: block!important;
+}
+
+.section {
+    display: none;
+}
+
 /*SIDEBAR*/
 .sidebar{
     width: 300px;
@@ -126,6 +141,12 @@ body{
     align-items: center;
 }
 
+.subtitle {
+    margin: 1rem 2rem;
+    display: flex;
+    align-items: end;
+}
+
 .btn{
     background-color: var(--primary_color);
     color: var(--white);
@@ -135,6 +156,19 @@ body{
     padding: 0.6rem 2rem;
     border-radius: 0.7rem;
     cursor: pointer;
+}
+
+.btn2{
+    background-color: var(--white);
+    color: var(--primary_color);
+    font-size: 1rem;
+    font-weight: 700;
+    border: solid;
+    border-radius: 0.7rem;
+    border-color: var(--primary_color);
+    padding: 0.6rem 2rem;
+    cursor: pointer;
+    margin-right: 1rem;
 }
 
 /*TABLE*/

@@ -7,6 +7,9 @@
         header('Location: index.php');
         exit();
     }
+
+    //Importar controlador de menu
+    require_once 'controllers/platillosController.php';
 ?>
 
 <!DOCTYPE html>
@@ -56,40 +59,40 @@
         
     </header>
 
-    <h1>Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
+    <h1>Platillos de <?php echo $area; ?></h1>
 
-    <br>
-    <div class="cards-container">
+    <!-- En este primer while, hacemos iteraciones entre cada categoría de platillos -->
+    <?php
+        while ($categoria = mysqli_fetch_assoc($resultQ_cat)) :
+            $cat_actual = $categoria['categoria'];
+            echo "<h2>" . $cat_actual . "</h2>";
+    ?>
+        <div class="container2">
+            <?php 
+            // Ahora, consultamos la categoría actual en la base de datos del área correspondiente
+            $query = "SELECT * FROM menu WHERE area = '$area' AND categoria = '$cat_actual'";
+            $result_cat = mysqli_query($db, $query);
 
-        <a href="platillos.php?area=Café" class="link_area">
-            <div class="card product animate__animated animate__backInUp">
-                <p>Menú de</p>
-                <h1>Café</h1>
-            </div>
-        </a>
-
-        <a href="platillos.php?area=Pérgola" class="link_area">
-            <div class="card product animate__animated animate__backInUp">
-                <p>Menú de</p>
-                <h1>Pérgola</h1>
-            </div>
-        </a>
-
-        <a href="platillos.php?area=Snacks" class="link_area">
-            <div class="card product animate__animated animate__backInUp">
-                <p>Menú de</p>
-                <h1>Snacks</h1>
-            </div>
-        </a>
-
-        <a href="platillos.php?area=Paninis" class="link_area">
-            <div class="card product animate__animated animate__backInUp">
-                <p>Menú de</p>
-                <h1>Paninis</h1>
-            </div>
-        </a>
-
-    </div>
+            while ($platillo = mysqli_fetch_assoc($result_cat)) :
+            ?>
+            <!--
+                Con este while recorremos todos los registros de la tabla menu de la 
+                categoría seleccionada.
+                cada fila la guardamos en la variable $platillo y entre corchete 
+                accedemos a las columnas necesarias colocando su nombre.
+                Para el caso de la etiqueta img, accedera a la ruta donde este
+                guardada la imagen.
+            -->
+                <a href="entrada.php?id=<?php echo $platillo['id']; ?>" class="link_product">
+                    <div class="product animate__animated animate__backInUp">
+                        <img src="/food/<?php echo $platillo['foto'] ?>" alt="food" class="food_img">
+                        <h2><?php echo $platillo['nombre'] ?></h2>
+                    </div>
+                </a>
+            <?php endwhile; ?>
+        </div>
+    
+    <?php endwhile; ?>
 
     <script src="js/mobile-menu.js"></script>
 </body>

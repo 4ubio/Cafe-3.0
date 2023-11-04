@@ -19,10 +19,11 @@ if (!$result->num_rows) {
 
 //Guardamos la fila del platillo deseado
 $platillo = mysqli_fetch_assoc($result);
+$area = $platillo['area'];
 
 // ----- Fijar tiempo dinámico -----
 //Obtener número de platillos en preparación
-$query_pedidos = "SELECT * FROM pedidos WHERE estado = 'En preparación'";
+$query_pedidos = "SELECT * FROM pedidos WHERE area = '$area' AND estado = 'En preparación'";
 $result_pedidos = mysqli_query($db, $query_pedidos);
 $num_pedidos = $result_pedidos->num_rows;
 

@@ -77,6 +77,11 @@
                 </div>
 
                 <div class="form-comp">
+                    <label for="name">Área:</label>
+                    <p> <b><?php echo $pedido['area'] ?></b></p>
+                </div>
+
+                <div class="form-comp">
                     <label for="name">Cantidad:</label>
                     <p><b><?php echo $pedido['cantidad'] ?></b></p>
                 </div>
@@ -100,9 +105,9 @@
                     <label for="status">Estado:</label>
                     <div class="custom-select">
                         <select id="status" class="field select" name="status">
-                            <option value="En preparación">En preparación</option>
-                            <option value="Listo para recoger">Listo para recoger</option>
-                            <option value="Entregado">Entregado</option>
+                            <option <?php if ($pedido['estado'] === 'En preparación') echo 'selected' ?> value="En preparación">En preparación</option>
+                            <option <?php if ($pedido['estado'] === 'Listo para recoger') echo 'selected' ?> value="Listo para recoger">Listo para recoger</option>
+                            <option <?php if ($pedido['estado'] === 'Entregado') echo 'selected' ?> value="Entregado">Entregado</option>
                         </select>
                     </div>
                     

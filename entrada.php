@@ -62,6 +62,7 @@
 
             <div class="info">
                 <p class="no_magin_top"><?php echo $platillo['descripcion'] ?></p>
+                <p class="no_magin_top">Recoger en: <span> <b><?php echo $platillo['area'] ?></b> </span></p>
                 <p class="no_magin_top">Precio: <span> <b>$<?php echo $platillo['precio'] ?></b> </span></p>
                 <p class="no_magin_top">Tiempo de preparación estimado: <span> <b><?php echo $tiempo ?> minutos</b> </span></p>
                 <p class="no_magin_top">Estado: <span> <b><?php echo $platillo['estado'] ?></b> </span></p>

@@ -86,6 +86,7 @@
                 <div class="info">
                     <h2 class="title">No. <?php echo $pedido['id']; ?></h2>
                     <p class="no_magin_top"><b><?php echo $pedido['nombre_platillo']; ?></b></p>
+                    <p class="no_magin_top">Recoger en: <span> <b><?php echo $pedido['area']; ?></b> </span></p>
                     <p class="no_magin_top">Fecha de pedido: <span> <b><?php echo $pedido['fecha']; ?></b> </span></p>
                     <p class="no_magin_top">Hora de pedido: <span> <b><?php echo $pedido['hora']; ?></b> </span></p>
                     <p class="no_magin_top">Total: <span> <b>$<?php echo $pedido['total']; ?> MXN</b> </span></p>

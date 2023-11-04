@@ -29,6 +29,10 @@
     $desc = $platillo['descripcion'];
     $status = $platillo['estado'];
     $time = $platillo['tiempo'];
+    $hour_i = $platillo['hora_inicio'];
+    $hour_f = $platillo['hora_fin'];
+    $area = $platillo['area'];
+    $category = $platillo['categoria'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //Limpiamos lo ingresado por el usuario para que no ingrese consultas de SQL
@@ -37,6 +41,10 @@
         $desc = mysqli_real_escape_string( $db, $_POST['desc'] );
         $status = mysqli_real_escape_string( $db, $_POST['status'] );
         $time = mysqli_real_escape_string( $db, $_POST['time'] );
+        $hour_i = mysqli_real_escape_string( $db, $_POST['hour_i'] );
+        $hour_f = mysqli_real_escape_string( $db, $_POST['hour_f'] );
+        $area = mysqli_real_escape_string( $db, $_POST['area'] );
+        $category = mysqli_real_escape_string( $db, $_POST['category'] );
 
         //Asignamos la imagen a una variable
         $img = $_FILES['image'];
@@ -57,6 +65,22 @@
 
         if(!$time) {
             $mistakes[] = "Debes añadir un tiempo de preparación al platillo";
+        }
+
+        if(!$hour_i) {
+            $mistakes[] = "Debes añadir una hora de inicio para ofrecer el platillo";
+        }
+
+        if(!$hour_f) {
+            $mistakes[] = "Debes añadir una hora de fin para ofrecer el platillo";
+        }
+
+        if(!$area) {
+            $mistakes[] = "Debes añadir una area donde ofrecen este platillo";
+        }
+
+        if(!$category) {
+            $mistakes[] = "Debes añadir una categoría donde se encuentra este platillo";
         }
 
         //Paso todas las validaciones (El arreglo de errores está vacío)
@@ -94,7 +118,11 @@
                     precio = $price,
                     descripcion = '$desc',
                     estado = '$status',
-                    tiempo = $time
+                    tiempo = $time,
+                    hora_inicio = '$hour_i',
+                    hora_fin = '$hour_f',
+                    categoria = '$category',
+                    area = '$area'
                     WHERE id = $id";
 
             $result2 = mysqli_query($db, $query2);

@@ -103,16 +103,52 @@
                     <label for="status">Estado:</label>
                     <div class="custom-select">
                         <select id="status" class="field select" name="status">
-                            <option value="Disponible">Disponible</option>
-                            <option value="No Disponible">No Disponible</option>
+                            <option <?php if ($status === 'Disponible') echo 'selected' ?> value="Disponible">Disponible</option>
+                            <option <?php if ($status === 'No Disponible') echo 'selected' ?> value="No Disponible">No Disponible</option>
                         </select>
                     </div>
-                    
                 </div>
 
                 <div class="form-comp">
                     <label for="time">Tiempo:</label>
                     <input id="time" autocomplete="off" class="field" type="number" name="time" value="<?php echo $time; ?>">
+                </div>
+
+                <div class="form-comp">
+                    <label for="hour_i">Hora inicio:</label>
+                    <input id="hour_i" autocomplete="off" class="field" type="time" name="hour_i" value="<?php echo $hour_i; ?>">
+                </div>
+
+                <div class="form-comp">
+                    <label for="hour_f">Hora fin:</label>
+                    <input id="hour_f" autocomplete="off" class="field" type="time" name="hour_f" value="<?php echo $hour_f; ?>">
+                </div>
+
+                <div class="form-comp">
+                    <label for="area">Área:</label>
+                    <div class="custom-select">
+                        <select id="area" class="field select" name="area">
+                            <option value="">-- Seleccionar --</option>
+                            <option <?php if ($area === 'Café') echo 'selected' ?> value="Café">Café</option>
+                            <option <?php if ($area === 'Pérgola') echo 'selected' ?> value="Pérgola">Pérgola</option>
+                            <option <?php if ($area === 'Snacks') echo 'selected' ?> value="Snacks">Snacks</option>
+                            <option <?php if ($area === 'Paninis') echo 'selected' ?> value="Paninis">Paninis</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-comp">
+                    <label for="category">Categoría:</label>
+                    <div class="custom-select">
+                        <select id="category" class="field select" name="category">
+                            <option value="">-- Seleccionar --</option>
+                            <option <?php if ($category === 'Desayunos') echo 'selected' ?> value="Desayunos">Desayunos</option>
+                            <option <?php if ($category === 'Saludables') echo 'selected' ?> value="Saludables">Saludables</option>
+                            <option <?php if ($category === 'Mexicana') echo 'selected' ?> value="Mexicana">Mexicana</option>
+                            <option <?php if ($category === 'Rápida') echo 'selected' ?> value="Rápida">Comida Rápida</option>
+                            <option <?php if ($category === 'Bebidas') echo 'selected' ?> value="Bebidas">Bebidas</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-comp submit">

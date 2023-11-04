@@ -44,12 +44,13 @@
 
             $platillo_name = $platillo_seleccionado['nombre'];
             $platillo_price = $platillo_seleccionado['precio'];
+            $platillo_area = $platillo_seleccionado['area'];
             
             $cant = 1;
             
             //Inserta en la base de datos con este Query
-            $query = "INSERT INTO pedidos (id_producto, nombre_platillo, cantidad, total, cliente, id_iest, hora, fecha, estado)
-            VALUES ('$platillo', '$platillo_name', '$cant', '$platillo_price', '$nombre', '$id_iest', '$hora', '$fecha', 'En preparación') ";
+            $query = "INSERT INTO pedidos (id_producto, nombre_platillo, cantidad, total, cliente, id_iest, hora, fecha, estado, area)
+            VALUES ('$platillo', '$platillo_name', '$cant', '$platillo_price', '$nombre', '$id_iest', '$hora', '$fecha', 'En preparación', '$platillo_area') ";
 
             $result = mysqli_query($db, $query);
 

@@ -63,6 +63,7 @@
             <div class="info">
                 <h2>Datos del pedido: </h2>
                 <p class="no_magin_top"> <b> <?php echo $platillo['nombre'] ?> </b> </p>
+                <p class="no_magin_top">Recoger en: <span> <b><?php echo $platillo['area'] ?></b> </span></p>
                 <p class="no_magin_top">Cantidad: <span> <b><?php echo $cant ?></b> </span> </p>
                 <p class="no_magin_top">Total: <span> <b>$<?php echo $total ?> MXN</b> </span></p>
                 <p class="no_magin_top">Tiempo de preparación estimado: <span> <b><?php echo $tiempo ?> minutos</b> </span></p>

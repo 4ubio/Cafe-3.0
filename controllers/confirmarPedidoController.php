@@ -31,16 +31,17 @@ $platillo = mysqli_fetch_assoc($result);
 $nombre = $_SESSION['nombre'] . " " . $_SESSION['apellido'];
 $id_iest = $_SESSION['id-iest'];
 $email = $_SESSION['email'];
-$hora = date('H:i',time() - 21500);
+$hora = date('H:i',time() - 21600);
 $fecha = date('Y/m/d');
 
 //Calcular total
 $nombre_platillo = $platillo['nombre'];
+$area = $platillo['area'];
 $total = $platillo['precio'] * $cant;
 
 // ----- Fijar tiempo dinámico -----
 //Obtener número de platillos en preparación
-$query_pedidos = "SELECT * FROM pedidos WHERE estado = 'En preparación'";
+$query_pedidos = "SELECT * FROM pedidos WHERE area = '$area' AND estado = 'En preparación'";
 $result_pedidos = mysqli_query($db, $query_pedidos);
 $num_pedidos = $result_pedidos->num_rows;
 
@@ -55,8 +56,8 @@ if ($num_pedidos < 10) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Inserta en la base de datos con este Query
-    $query = "INSERT INTO pedidos (id_producto, nombre_platillo, cantidad, total, cliente, id_iest, hora, fecha, estado)
-    VALUES ('$id', '$nombre_platillo', '$cant', '$total', '$nombre', '$id_iest', '$hora', '$fecha', 'En preparación') ";
+    $query = "INSERT INTO pedidos (id_producto, nombre_platillo, cantidad, total, cliente, id_iest, hora, fecha, estado, area)
+    VALUES ('$id', '$nombre_platillo', '$cant', '$total', '$nombre', '$id_iest', '$hora', '$fecha', 'En preparación', '$area') ";
 
     $result = mysqli_query($db, $query);
 

@@ -12,6 +12,7 @@
     
     //Fecha actual
     $today = getdate();
+    $now = date('H:i',time() - 21600);
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +94,7 @@
     -->
 
     <footer>
-        <p><?php echo $today['weekday'] . " " . $today['mday'] . ", " . $today['month'] . ", " . $today['year']?></p>
+        <p><?php echo $today['weekday'] . " " . $today['mday'] . ", " . $today['month'] . ", " . $today['year'] . ", " . $now ?></p>
     </footer>
 </body>
 </html>

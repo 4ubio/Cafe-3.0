@@ -74,8 +74,21 @@
         <?php elseif(intval($resultGet) === 2) : ?>
             <p class="success__alert">Platillo actualizado correctamente</p>
         <?php endif; ?>
+
+        <div>
+            <nav class="tabs">
+                <button class="btn2" type="button" data-paso = 1>Café</button>
+                <button class="btn2" type="button" data-paso = 2>Pérgola</button>
+                <button class="btn2" type="button" data-paso = 3>Snacks</button>
+                <button class="btn2" type="button" data-paso = 4>Paninis</button>
+            </nav>
+        </div>
         
-        <div class="table-container">
+        <br>
+        
+        <!-- Café -->
+
+        <div id="paso-1" class="table-container section">
             <table class="table-menu">
                 <tr class="headers">
                     <th>ID</th>
@@ -85,6 +98,10 @@
                     <th>Descripción</th>
                     <th>Estado</th>
                     <th>Tiempo</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>Área</th>
+                    <th>Categoría</th>
                     <th>Acciones</th> 
                 </tr>
 
@@ -114,6 +131,10 @@
                     <td><?php echo $platillo['descripcion'] ?></td>
                     <td class="<?php echo $class ?>"><?php echo $platillo['estado'] ?></td>
                     <td><?php echo $platillo['tiempo'] ?></td>
+                    <td><?php echo $platillo['hora_inicio'] ?></td>
+                    <td><?php echo $platillo['hora_fin'] ?></td>
+                    <td><?php echo $platillo['area'] ?></td>
+                    <td><?php echo $platillo['categoria'] ?></td>
                     <td>
                         <!--
                             El link de editar de cada platillo llevará contigo un número
@@ -126,10 +147,146 @@
                 <?php endwhile; ?>
             </table>
         </div>
+
+        <!-- Pérgola -->
+        
+        <div id="paso-2" class="table-container section">
+            <table class="table-menu">
+                <tr class="headers">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Foto</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Tiempo</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>Área</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th> 
+                </tr>
+                    
+                <?php while($platillo = mysqli_fetch_assoc($resultQ2)) : 
+                    //Con este if cambiamos el color del estado de cada platillo 
+                    if ($platillo['estado']==='Disponible') {
+                        $class='disponible';
+                    } else {
+                        $class='no-disponible';
+                    }
+                ?>
+                <tr>
+                    <td><?php echo $platillo['id'] ?></td>
+                    <td><?php echo $platillo['nombre'] ?></td>
+                    <td><img class="table-img" src="/food/<?php echo $platillo['foto'] ?>" alt=""></td>
+                    <td>$ <?php echo $platillo['precio'] ?></td>
+                    <td><?php echo $platillo['descripcion'] ?></td>
+                    <td class="<?php echo $class ?>"><?php echo $platillo['estado'] ?></td>
+                    <td><?php echo $platillo['tiempo'] ?></td>
+                    <td><?php echo $platillo['hora_inicio'] ?></td>
+                    <td><?php echo $platillo['hora_fin'] ?></td>
+                    <td><?php echo $platillo['area'] ?></td>
+                    <td><?php echo $platillo['categoria'] ?></td>
+                    <td> <a href="editarplatillo.php?id=<?php echo $platillo['id']; ?>"><button class="btn-editar">Editar</button></a> </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </div>
+
+        <!-- Snacks -->
+        
+        <div id="paso-3" class="table-container section">
+            <table class="table-menu">
+                <tr class="headers">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Foto</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Tiempo</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>Área</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th> 
+                </tr>
+                    
+                <?php while($platillo = mysqli_fetch_assoc($resultQ3)) : 
+                    //Con este if cambiamos el color del estado de cada platillo 
+                    if ($platillo['estado']==='Disponible') {
+                        $class='disponible';
+                    } else {
+                        $class='no-disponible';
+                    }
+                ?>
+                <tr>
+                    <td><?php echo $platillo['id'] ?></td>
+                    <td><?php echo $platillo['nombre'] ?></td>
+                    <td><img class="table-img" src="/food/<?php echo $platillo['foto'] ?>" alt=""></td>
+                    <td>$ <?php echo $platillo['precio'] ?></td>
+                    <td><?php echo $platillo['descripcion'] ?></td>
+                    <td class="<?php echo $class ?>"><?php echo $platillo['estado'] ?></td>
+                    <td><?php echo $platillo['tiempo'] ?></td>
+                    <td><?php echo $platillo['hora_inicio'] ?></td>
+                    <td><?php echo $platillo['hora_fin'] ?></td>
+                    <td><?php echo $platillo['area'] ?></td>
+                    <td><?php echo $platillo['categoria'] ?></td>
+                    <td> <a href="editarplatillo.php?id=<?php echo $platillo['id']; ?>"><button class="btn-editar">Editar</button></a> </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </div>
+
+        <!-- Paninis -->
+        
+        <div id="paso-4" class="table-container section">
+            <table class="table-menu">
+                <tr class="headers">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Foto</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Tiempo</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>Área</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th> 
+                </tr>
+                    
+                <?php while($platillo = mysqli_fetch_assoc($resultQ4)) : 
+                    //Con este if cambiamos el color del estado de cada platillo 
+                    if ($platillo['estado']==='Disponible') {
+                        $class='disponible';
+                    } else {
+                        $class='no-disponible';
+                    }
+                ?>
+                <tr>
+                    <td><?php echo $platillo['id'] ?></td>
+                    <td><?php echo $platillo['nombre'] ?></td>
+                    <td><img class="table-img" src="/food/<?php echo $platillo['foto'] ?>" alt=""></td>
+                    <td>$ <?php echo $platillo['precio'] ?></td>
+                    <td><?php echo $platillo['descripcion'] ?></td>
+                    <td class="<?php echo $class ?>"><?php echo $platillo['estado'] ?></td>
+                    <td><?php echo $platillo['tiempo'] ?></td>
+                    <td><?php echo $platillo['hora_inicio'] ?></td>
+                    <td><?php echo $platillo['hora_fin'] ?></td>
+                    <td><?php echo $platillo['area'] ?></td>
+                    <td><?php echo $platillo['categoria'] ?></td>
+                    <td> <a href="editarplatillo.php?id=<?php echo $platillo['id']; ?>"><button class="btn-editar">Editar</button></a> </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </div>
        
     </main>
 
     <script src="../js/admin.js"></script>
+    <script src="../js/tabs.js"></script>
 
     <!--
         Aqui se imprime la fecha en formato:

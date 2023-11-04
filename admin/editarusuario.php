@@ -81,16 +81,11 @@
                 </div>
 
                 <div class="form-comp">
-                    <label for="">Estado:</label>
-                    <p><b><?php echo $user['estado'] ?></b></p>
-                </div>
-
-                <div class="form-comp">
                     <label for="estado">Editar estado:</label>
                     <div class="custom-select">
                         <select id="estado" class="field select" name="estado">
-                            <option value="Activo">Activo</option>
-                            <option value="Bloqueado">Bloqueado</option>
+                            <option <?php if ($user['estado'] === 'Activo') echo 'selected' ?> value="Activo">Activo</option>
+                            <option <?php if ($user['estado'] === 'Bloqueado') echo 'selected' ?> value="Bloqueado">Bloqueado</option>
                         </select>
                     </div>
                 </div>
