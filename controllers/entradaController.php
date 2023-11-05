@@ -34,6 +34,11 @@ if ($num_pedidos < 10) {
     $tiempo = $platillo['tiempo'] * ($multiplos + 1);
 }
 
+// ----- Validación de la hora -----
+$now = date('H:i',time() - 21600);
+$hora_inicio = $platillo['hora_inicio'];
+$hora_fin = $platillo['hora_fin'];
+
 //Redireccionar al seleccionar un platillo y cantidad
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cant = (int) $_POST['cant'];

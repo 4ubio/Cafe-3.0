@@ -292,7 +292,7 @@ body {
 
 .card h1{
     color: var(--primary_color);
-    text-align: right;
+    text-align: center;
     font-size: 3rem;
 }
 

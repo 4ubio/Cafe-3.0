@@ -41,6 +41,7 @@
 
         <div class="sidebar-nav">
             <ul class="navigation">
+                <li><a class="nav-li" href="crearpedido.php">Crear pedido</a></li>
                 <li><a class="nav-li active" href="pedidos.php">Pedidos</a></li>
                 <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
             </ul>
@@ -58,130 +59,233 @@
         <?php if(intval($resultGet) === 1) : ?>
             <p class="success__alert">Pedido actualizado correctamente</p>
         <?php endif; ?>
-
-        <div class="title">
-            <h1>En preparación</h1>
-        </div>
+        <?php if(intval($resultGet) === 2) : ?>
+            <p class="success__alert">Pedido creado correctamente</p>
+        <?php endif; ?>
         
-        <div class="table-container">
-            <table class="table-menu">
-                <tr class="headers">
-                    <th># de seguimiento</th>
-                    <th>Platillo</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                    <th>Cliente</th>
-                    <th>ID Alumno</th>
-                    <th>Hora de pedido</th>
-                    <th>Fecha de pedido</th>
-                    <th>Estado</th> 
-                    <th>Editar</th> 
-                </tr>
+        <br>
 
-                <?php while($pedido = mysqli_fetch_assoc($resultQ1)) : ?> 
-                <tr>
-                    <td><?php echo $pedido['id'] ?></td>
-                    <td><?php echo $pedido['nombre_platillo'] ?></td>
-                    <td><?php echo $pedido['cantidad'] ?></td>
-                    <td>$<?php echo $pedido['total'] ?></td>
-                    <td><?php echo $pedido['cliente'] ?></td>
-                    <td><?php echo $pedido['id_iest'] ?></td>
-                    <td><?php echo $pedido['hora'] ?></td>
-                    <td><?php echo $pedido['fecha'] ?></td>
-                    <td><?php echo $pedido['estado'] ?></td>
-                    <td>
-                        <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
-                    </td>
-                </tr>
-
-                <?php endwhile; ?>
-
-            </table>
+        <div>
+            <nav class="tabs">
+                <button class="btn2" type="button" data-paso = 1>Café</button>
+                <button class="btn2" type="button" data-paso = 2>Pérgola</button>
+                <button class="btn2" type="button" data-paso = 3>Snacks</button>
+                <button class="btn2" type="button" data-paso = 4>Paninis</button>
+            </nav>
         </div>
 
-        <div class="title">
-            <h1>Listo para recoger</h1>
+        <!-- Café -->
+
+        <div id="paso-1" class="section">
+            <h1 class="title">Pedidos Café</h1>
+            
+            <?php foreach ($estados as $estado): 
+                echo '<h2 class="subtitle">' . $estado . '</h2>';
+            ?>
+            
+            <div class="table-container">
+                <table class="table-menu">
+                    <tr class="headers">
+                        <th># de seguimiento</th>
+                        <th>Platillo</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Cliente</th>
+                        <th>ID Alumno</th>
+                        <th>Hora de pedido</th>
+                        <th>Fecha de pedido</th>
+                        <th>Estado</th> 
+                        <th>Área</th> 
+                        <th>Editar</th> 
+                    </tr>
+
+                    <?php 
+                        //Escribir el query para cada estado del área correspondiente
+                        $query = "SELECT * FROM pedidos WHERE area = 'Café' AND estado = '$estado' ORDER BY id ASC";
+                        $result = mysqli_query($db, $query);
+                        while($pedido = mysqli_fetch_assoc($result)) : 
+                    ?> 
+                    <tr>
+                        <td><?php echo $pedido['id'] ?></td>
+                        <td><?php echo $pedido['nombre_platillo'] ?></td>
+                        <td><?php echo $pedido['cantidad'] ?></td>
+                        <td>$<?php echo $pedido['total'] ?></td>
+                        <td><?php echo $pedido['cliente'] ?></td>
+                        <td><?php echo $pedido['id_iest'] ?></td>
+                        <td><?php echo $pedido['hora'] ?></td>
+                        <td><?php echo $pedido['fecha'] ?></td>
+                        <td><?php echo $pedido['estado'] ?></td>
+                        <td><?php echo $pedido['area'] ?></td>
+                        <td>
+                            <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </table>
+            </div>
+            <?php endforeach; ?>
         </div>
-        
-        <div class="table-container">
-            <table class="table-menu">
-                <tr class="headers">
-                    <th># de seguimiento</th>
-                    <th>Platillo</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                    <th>Cliente</th>
-                    <th>ID Alumno</th>
-                    <th>Hora de pedido</th>
-                    <th>Fecha de pedido</th>
-                    <th>Estado</th> 
-                    <th>Editar</th> 
-                </tr>
 
-                <?php while($pedido = mysqli_fetch_assoc($resultQ2)) : ?> 
-                <tr>
-                    <td><?php echo $pedido['id'] ?></td>
-                    <td><?php echo $pedido['nombre_platillo'] ?></td>
-                    <td><?php echo $pedido['cantidad'] ?></td>
-                    <td>$<?php echo $pedido['total'] ?></td>
-                    <td><?php echo $pedido['cliente'] ?></td>
-                    <td><?php echo $pedido['id_iest'] ?></td>
-                    <td><?php echo $pedido['hora'] ?></td>
-                    <td><?php echo $pedido['fecha'] ?></td>
-                    <td><?php echo $pedido['estado'] ?></td>
-                    <td>
-                        <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
-                    </td>
-                </tr>
+        <!-- Pérgola -->
 
-                <?php endwhile; ?>
+        <div id="paso-2" class="section">
+            <h1 class="title">Pedidos Pérgola</h1>
+            
+            <?php foreach ($estados as $estado): 
+                echo '<h2 class="subtitle">' . $estado . '</h2>';
+            ?>
+            
+            <div class="table-container">
+                <table class="table-menu">
+                    <tr class="headers">
+                        <th># de seguimiento</th>
+                        <th>Platillo</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Cliente</th>
+                        <th>ID Alumno</th>
+                        <th>Hora de pedido</th>
+                        <th>Fecha de pedido</th>
+                        <th>Estado</th> 
+                        <th>Área</th> 
+                        <th>Editar</th> 
+                    </tr>
 
-            </table>
+                    <?php 
+                        //Escribir el query para cada estado del área correspondiente
+                        $query = "SELECT * FROM pedidos WHERE area = 'Pérgola' AND estado = '$estado' ORDER BY id ASC";
+                        $result = mysqli_query($db, $query);
+                        while($pedido = mysqli_fetch_assoc($result)) : 
+                    ?> 
+                    <tr>
+                        <td><?php echo $pedido['id'] ?></td>
+                        <td><?php echo $pedido['nombre_platillo'] ?></td>
+                        <td><?php echo $pedido['cantidad'] ?></td>
+                        <td>$<?php echo $pedido['total'] ?></td>
+                        <td><?php echo $pedido['cliente'] ?></td>
+                        <td><?php echo $pedido['id_iest'] ?></td>
+                        <td><?php echo $pedido['hora'] ?></td>
+                        <td><?php echo $pedido['fecha'] ?></td>
+                        <td><?php echo $pedido['estado'] ?></td>
+                        <td><?php echo $pedido['area'] ?></td>
+                        <td>
+                            <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </table>
+            </div>
+            <?php endforeach; ?>
         </div>
 
-        <div class="title">
-            <h1>Entregado</h1>
+        <!-- Snacks -->
+
+        <div id="paso-3" class="section">
+            <h1 class="title">Pedidos Snacks</h1>
+            
+            <?php foreach ($estados as $estado): 
+                echo '<h2 class="subtitle">' . $estado . '</h2>';
+            ?>
+            
+            <div class="table-container">
+                <table class="table-menu">
+                    <tr class="headers">
+                        <th># de seguimiento</th>
+                        <th>Platillo</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Cliente</th>
+                        <th>ID Alumno</th>
+                        <th>Hora de pedido</th>
+                        <th>Fecha de pedido</th>
+                        <th>Estado</th> 
+                        <th>Área</th> 
+                        <th>Editar</th> 
+                    </tr>
+
+                    <?php 
+                        //Escribir el query para cada estado del área correspondiente
+                        $query = "SELECT * FROM pedidos WHERE area = 'Snacks' AND estado = '$estado' ORDER BY id ASC";
+                        $result = mysqli_query($db, $query);
+                        while($pedido = mysqli_fetch_assoc($result)) : 
+                    ?> 
+                    <tr>
+                        <td><?php echo $pedido['id'] ?></td>
+                        <td><?php echo $pedido['nombre_platillo'] ?></td>
+                        <td><?php echo $pedido['cantidad'] ?></td>
+                        <td>$<?php echo $pedido['total'] ?></td>
+                        <td><?php echo $pedido['cliente'] ?></td>
+                        <td><?php echo $pedido['id_iest'] ?></td>
+                        <td><?php echo $pedido['hora'] ?></td>
+                        <td><?php echo $pedido['fecha'] ?></td>
+                        <td><?php echo $pedido['estado'] ?></td>
+                        <td><?php echo $pedido['area'] ?></td>
+                        <td>
+                            <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </table>
+            </div>
+            <?php endforeach; ?>
         </div>
-        
-        <div class="table-container">
-            <table class="table-menu">
-                <tr class="headers">
-                    <th># de seguimiento</th>
-                    <th>Platillo</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                    <th>Cliente</th>
-                    <th>ID Alumno</th>
-                    <th>Hora de pedido</th>
-                    <th>Fecha de pedido</th>
-                    <th>Estado</th> 
-                    <th>Editar</th> 
-                </tr>
 
-                <?php while($pedido = mysqli_fetch_assoc($resultQ3)) : ?> 
-                <tr>
-                    <td><?php echo $pedido['id'] ?></td>
-                    <td><?php echo $pedido['nombre_platillo'] ?></td>
-                    <td><?php echo $pedido['cantidad'] ?></td>
-                    <td>$<?php echo $pedido['total'] ?></td>
-                    <td><?php echo $pedido['cliente'] ?></td>
-                    <td><?php echo $pedido['id_iest'] ?></td>
-                    <td><?php echo $pedido['hora'] ?></td>
-                    <td><?php echo $pedido['fecha'] ?></td>
-                    <td><?php echo $pedido['estado'] ?></td>
-                    <td>
-                        <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
-                    </td>
-                </tr>
+        <!-- Paninis -->
 
-                <?php endwhile; ?>
+        <div id="paso-4" class="section">
+            <h1 class="title">Pedidos Paninis</h1>
+            
+            <?php foreach ($estados as $estado): 
+                echo '<h2 class="subtitle">' . $estado . '</h2>';
+            ?>
+            
+            <div class="table-container">
+                <table class="table-menu">
+                    <tr class="headers">
+                        <th># de seguimiento</th>
+                        <th>Platillo</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Cliente</th>
+                        <th>ID Alumno</th>
+                        <th>Hora de pedido</th>
+                        <th>Fecha de pedido</th>
+                        <th>Estado</th> 
+                        <th>Área</th> 
+                        <th>Editar</th> 
+                    </tr>
 
-            </table>
+                    <?php 
+                        //Escribir el query para cada estado del área correspondiente
+                        $query = "SELECT * FROM pedidos WHERE area = 'Paninis' AND estado = '$estado' ORDER BY id ASC";
+                        $result = mysqli_query($db, $query);
+                        while($pedido = mysqli_fetch_assoc($result)) : 
+                    ?> 
+                    <tr>
+                        <td><?php echo $pedido['id'] ?></td>
+                        <td><?php echo $pedido['nombre_platillo'] ?></td>
+                        <td><?php echo $pedido['cantidad'] ?></td>
+                        <td>$<?php echo $pedido['total'] ?></td>
+                        <td><?php echo $pedido['cliente'] ?></td>
+                        <td><?php echo $pedido['id_iest'] ?></td>
+                        <td><?php echo $pedido['hora'] ?></td>
+                        <td><?php echo $pedido['fecha'] ?></td>
+                        <td><?php echo $pedido['estado'] ?></td>
+                        <td><?php echo $pedido['area'] ?></td>
+                        <td>
+                            <a href="editarpedido.php?id=<?php echo $pedido['id']; ?>"><button class="btn-editar">Editar</button></a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </table>
+            </div>
+            <?php endforeach; ?>
         </div>
        
     </main>
 
     <script src="../js/admin.js"></script>
+    <script src="../js/tabs.js"></script>
 
     <!--
         Aqui se imprime la fecha en formato:

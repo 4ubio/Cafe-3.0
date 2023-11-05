@@ -69,37 +69,45 @@
                 
                 <?php if($_SESSION['estado'] !== 'Bloqueado') : ?>
                     
-                    <!--
-                        Con este if, en caso de que el estado guardado del platillo
-                        sea Disponible, mostrara el formulario para seleccionar
-                        cantidad y el boton de pedir, en caso contrario, no mostrará
-                        nada.
-                    -->
-                    
-                    <?php if($platillo['estado'] === 'Disponible') : ?>
-                    <form method="POST" enctype="multipart/form-data" class="product_form" novalidate>
-                        <div class="container3">
-                            <label>Cantidad: </label>
-                            <select name="cant" id="cant" class="select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
+                    <!-- 
+                        Con este if, nos aseguramos de estar dentro del horario de servicio
+                     -->
+                    <?php if($now >= $hora_inicio and $now < $hora_fin) : ?>
 
-                        <br>
+                        <!--
+                            Con este if, en caso de que el estado guardado del platillo
+                            sea Disponible, mostrara el formulario para seleccionar
+                            cantidad y el boton de pedir, en caso contrario, no mostrará
+                            nada.
+                        -->
+                        <?php if($platillo['estado'] === 'Disponible') : ?>
+                        <form method="POST" enctype="multipart/form-data" class="product_form" novalidate>
+                            <div class="container3">
+                                <label>Cantidad: </label>
+                                <select name="cant" id="cant" class="select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
 
-                        <div class="">
-                            <input type="submit" value="Seleccionar" class="submit w-100">
-                        </div>
-                    </form>
+                            <br>
+
+                            <div class="">
+                                <input type="submit" value="Seleccionar" class="submit w-100">
+                            </div>
+                        </form>
+                        <?php endif; ?>
+
+                    <?php else: ?>
+                        <p class="no_magin_top"><b>Este platillo no esta disponible dentro de este horario. Por favor, revisa más tarde.</b></p>
                     <?php endif; ?>
 
                 <?php else : ?>

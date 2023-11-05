@@ -65,7 +65,7 @@
             // //Redireccionar en caso de todo correcto y 
             // //pasar un número para mostrar un mensaje
             if ($result) {
-                header("Location: /admin/pedidos.php?result=2");
+                header("Location: /admin_pedidos/pedidos.php?result=2");
             }
         }
     }
