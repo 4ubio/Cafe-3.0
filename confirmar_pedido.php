@@ -55,6 +55,10 @@
 
     <h1>Confirmar pedido</h1>
 
+    <?php if(intval($payed) === 2) : ?>
+        <p class="error__alert">Pago no completado o cancelado.</p>
+    <?php endif; ?>
+
     <div class="container">
 
         <div class="confirm_info">
@@ -63,9 +67,10 @@
             <div class="info">
                 <h2>Datos del pedido: </h2>
                 <p class="no_magin_top"> <b> <?php echo $platillo['nombre'] ?> </b> </p>
+                <p class="no_magin_top">ID Producto: <b><span id="id"><?php echo $id ?></span></b></p>
                 <p class="no_magin_top">Recoger en: <span> <b><?php echo $platillo['area'] ?></b> </span></p>
-                <p class="no_magin_top">Cantidad: <span> <b><?php echo $cant ?></b> </span> </p>
-                <p class="no_magin_top">Total: <span> <b>$<?php echo $total ?> MXN</b> </span></p>
+                <p class="no_magin_top">Cantidad: <b><span id="cant"><?php echo $cant ?></span></b> </p>
+                <p class="no_magin_top">Total: <b>$<span id="total"><?php echo $total ?></span> MXN</b></p>
                 <p class="no_magin_top">Tiempo de preparación estimado: <span> <b><?php echo $tiempo ?> minutos</b> </span></p>
 
                 <br>
@@ -96,9 +101,7 @@
                         -->
                         <?php if($platillo['estado'] === 'Disponible') : ?>
                         <form method="POST" enctype="multipart/form-data" class="product_form">
-                            <div class="">
-                                <input type="submit" value="Confirmar" class="submit w-100">
-                            </div>
+                            <div id="paypal-payment-button"></div>
                         </form>
                         <?php endif; ?>
 
@@ -114,5 +117,9 @@
     </div>
 
     <script src="js/mobile-menu.js"></script>
+    
+    <!-- PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AZcDa4UNI086TfJnj4LA_10KsZBFMcWBnzJ1qAagc_m2OLZ6828gzCG4lhDZQNFf6Q4l2so4fVHsjXOS&currency=MXN&disable-funding=credit,card"></script>
+    <script src="js/paypal.js"></script>
 </body>
 </html>

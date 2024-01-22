@@ -6,6 +6,10 @@ $id = filter_var($id, FILTER_VALIDATE_INT);
 $cant = $_GET['cant'];
 $cant = filter_var($cant, FILTER_VALIDATE_INT);
 
+//Obtener si hemos pagado
+$payed = $_GET['payed'] ?? null;
+$payed = filter_var($payed, FILTER_VALIDATE_INT);
+
 //Validación en caso de que el usuario modifique el URL eliminando el ID o cantidad
 if (!$id) {
     header('location: /menu.php');
@@ -58,8 +62,7 @@ $hora_inicio = $platillo['hora_inicio'];
 $hora_fin = $platillo['hora_fin'];
 
 //Confirm
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($payed === 1) {
     //Inserta en la base de datos con este Query
     $query = "INSERT INTO pedidos (id_producto, nombre_platillo, cantidad, total, cliente, id_iest, hora, fecha, estado, area)
     VALUES ('$id', '$nombre_platillo', '$cant', '$total', '$nombre', '$id_iest', '$hora', '$fecha', 'En preparación', '$area') ";

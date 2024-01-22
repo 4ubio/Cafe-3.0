@@ -333,6 +333,10 @@ body {
 
 /**More info**/
 
+#paypal-payment-button {
+    width: 100%;
+}
+
 .product_info {
     background-color: var(--gray);
     border-radius: 2rem;
@@ -394,6 +398,11 @@ body {
 
     .w-100 {
         width: 50%;
+    }
+
+    #paypal-payment-button {
+        width: 50%;
+        margin: 0 auto;
     }
 }
 
