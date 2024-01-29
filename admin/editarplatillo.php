@@ -46,6 +46,7 @@
                 <li><a class="nav-li active" href="menu.php">Menú</a></li>
                 <li><a class="nav-li" href="crearpedido.php">Crear pedido</a></li>
                 <li><a class="nav-li" href="pedidos.php">Pedidos</a></li>
+                <li><a class="nav-li" href="norecogidos.php">No recogidos</a></li>
                 <li><a class="nav-li" href="usuarios.php">Usuarios</a></li>
                 <li><a class="nav-li" href="index.php?logout=1">Cerrar sesión</a></li>
             </ul>
