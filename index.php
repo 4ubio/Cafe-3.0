@@ -29,7 +29,10 @@
         <div class="">
             <form method="post" action="" class="log_form" novalidate>
                 <div class="container">
-                    <img src="assets/logo.png" alt="logo" class="logo_img">
+                    <div class="logos">
+                    <img src="assets/delfin.png" alt="logo" class="logo_img">
+                    <img src="assets/Cafe1.png" alt="logo" class="cafe1_img">
+                    </div>
                 </div>
                 
                 <div class="form_comp">

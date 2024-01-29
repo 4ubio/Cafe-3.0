@@ -27,11 +27,11 @@
     <title>Cafe 3.0</title>
 </head>
 <body>
-    <div class="index_background container">
+    <div class="register_background container">
         <div class="">
             <form method="post" action="" class="log_form" novalidate>
                 <div class="container">
-                    <img src="assets/logo.png" alt="logo" class="logo_img">
+                    <img src="assets/Cafe1.png" alt="logo" class="cafe1_img">
                 </div>
                 
                 <div class="form_comp" id="email">
