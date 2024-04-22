@@ -1,5 +1,6 @@
 <?php 
     require_once 'controllers/authController.php';
+    $messageGet = $_GET['message'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +37,10 @@
                     <img src="assets/Cafe1.png" alt="logo" class="cafe1_img">
                     </div>
                 </div>
+
+                <?php if(intval($messageGet) === 1) : ?>
+                    <p class="info__alert">Una vez creada tu cuenta correctamente, regresa a la app e inicia sesión.</p>
+                <?php endif; ?>
                 
                 <div class="form_comp" id="email">
                     <img src="assets/email.png" alt="email" class="icon">

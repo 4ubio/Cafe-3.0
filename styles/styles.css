@@ -581,3 +581,14 @@ body {
     border-radius: .7rem;
     background-color: green;
 }
+
+.info__alert {
+    padding: .5rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-radius: .7rem;
+    background-color: #ED9455;
+}
